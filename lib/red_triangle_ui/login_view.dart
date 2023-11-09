@@ -37,7 +37,9 @@ class _LoginViewState extends State<LoginView> {
         padding: const PagePaddings.formField(),
         child: Column(
           children: [
-            SizedBox(height: 150, child: Image.asset(PngImages.redTriangleLogo.getPngPath)),
+            AnimatedContainer(
+                duration: const Duration(seconds: 1),
+                child: SizedBox(height: 150, child: Image.asset(PngImages.redTriangleLogo.getPngPath))),
             Text(
               _signIn,
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600),
@@ -82,12 +84,70 @@ class _LoginViewState extends State<LoginView> {
                 Text(_rememberMe),
                 Padding(
                   padding: const EdgeInsets.only(left: 30.0),
-                  child: Text(
-                    _forgotPassword,
-                    style: Theme.of(context).textTheme.labelLarge,
-                  ),
-                )
+                  child: Text(_forgotPassword, style: Theme.of(context).textTheme.labelLarge),
+                ),
               ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                        backgroundColor: const MaterialStatePropertyAll(Color(0xfff84c64)),
+                        shape:
+                            MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)))),
+                    child: Text(_signIn, style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.white)),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Text(_orSignIn),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Row(mainAxisSize: MainAxisSize.min, children: [
+                InkWell(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: SizedBox(
+                        height: 40,
+                        child: Image.asset(
+                          PngImages.facebook.getPngPath,
+                        )),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: InkWell(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: SizedBox(
+                          height: 40,
+                          child: Image.asset(
+                            PngImages.twitter.getPngPath,
+                          )),
+                    ),
+                  ),
+                ),
+              ]),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('$_signUpText  '),
+                  InkWell(
+                    child: Text(
+                      _signUp,
+                      style: Theme.of(context).textTheme.labelLarge,
+                    ),
+                  ),
+                ],
+              ),
             )
           ],
         ),
