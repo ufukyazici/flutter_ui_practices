@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_practices/product/extension/png_image_extension.dart';
 import 'package:flutter_ui_practices/red_triangle_ui/button_sign_in.dart';
+import 'package:flutter_ui_practices/red_triangle_ui/register_view.dart';
 import 'package:kartal/kartal.dart';
 
 class LoginView extends StatefulWidget {
@@ -10,7 +11,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  final String _signIn = "SIGN IN";
+  final String _signInTitle = "SIGN IN";
   final String _username = 'username';
   final String _password = 'password';
   final String _rememberMe = "Remember me";
@@ -30,10 +31,6 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffe5e8ec),
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-      ),
       body: Center(
           child: Padding(
         padding: const PagePaddings.formField(),
@@ -43,11 +40,8 @@ class _LoginViewState extends State<LoginView> {
                 height: context.general.isKeyBoardOpen ? 0 : 150,
                 duration: const Duration(milliseconds: 200),
                 child: SizedBox(height: 150, child: Image.asset(PngImages.redTriangleLogo.getPngPath))),
-            Text(
-              _signIn,
-              style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600),
-            ),
-            _UsernamePasswordForm(username: _username, password: _password),
+            Text(_signInTitle, style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w600)),
+            UsernamePasswordForm(username: _username, password: _password),
             Row(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -64,7 +58,7 @@ class _LoginViewState extends State<LoginView> {
                 ),
               ],
             ),
-            ButtonSignIn(signIn: _signIn),
+            ButtonSignIn(signIn: _signInTitle),
             Visibility(
               visible: !context.general.isKeyBoardOpen,
               child: Column(children: [
@@ -79,7 +73,11 @@ class _LoginViewState extends State<LoginView> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text('$_signUpText  '),
-                      InkWell(child: Text(_signUp, style: Theme.of(context).textTheme.labelLarge))
+                      InkWell(
+                          onTap: () {
+                            context.route.navigateToPage(const RegisterView());
+                          },
+                          child: Text(_signUp, style: Theme.of(context).textTheme.labelLarge))
                     ],
                   ),
                 )
@@ -103,11 +101,7 @@ class SocialLoginWidget extends StatelessWidget {
       InkWell(
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10),
-          child: SizedBox(
-              height: 40,
-              child: Image.asset(
-                PngImages.facebook.getPngPath,
-              )),
+          child: SizedBox(height: 40, child: Image.asset(PngImages.facebook.getPngPath)),
         ),
       ),
       Padding(
@@ -115,11 +109,7 @@ class SocialLoginWidget extends StatelessWidget {
         child: InkWell(
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: SizedBox(
-                height: 40,
-                child: Image.asset(
-                  PngImages.twitter.getPngPath,
-                )),
+            child: SizedBox(height: 40, child: Image.asset(PngImages.twitter.getPngPath)),
           ),
         ),
       ),
@@ -127,8 +117,9 @@ class SocialLoginWidget extends StatelessWidget {
   }
 }
 
-class _UsernamePasswordForm extends StatelessWidget {
-  const _UsernamePasswordForm({
+class UsernamePasswordForm extends StatelessWidget {
+  const UsernamePasswordForm({
+    super.key,
     required String username,
     required String password,
   })  : _username = username,
@@ -140,38 +131,28 @@ class _UsernamePasswordForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
-        child: Column(
-      children: [
-        Padding(
-          padding: const PagePaddings.onlyTop(),
-          child: TextFormField(
-            decoration: InputDecoration(
-              fillColor: Colors.white,
-              filled: true,
-              hintText: _username,
-              border: const OutlineInputBorder(),
-            ),
-          ),
+        child: Column(children: [
+      Padding(
+        padding: const PagePaddings.onlyTop(),
+        child: TextFormField(
+          decoration: InputDecoration(
+              fillColor: Colors.white, filled: true, hintText: _username, border: const OutlineInputBorder()),
         ),
-        Padding(
-          padding: const PagePaddings.onlyTop(),
-          child: TextFormField(
-            obscureText: true,
-            decoration: InputDecoration(
-              fillColor: Colors.white,
-              filled: true,
-              hintText: _password,
-              border: const OutlineInputBorder(),
-            ),
-          ),
+      ),
+      Padding(
+        padding: const PagePaddings.onlyTop(),
+        child: TextFormField(
+          obscureText: true,
+          decoration: InputDecoration(
+              fillColor: Colors.white, filled: true, hintText: _password, border: const OutlineInputBorder()),
         ),
-      ],
-    ));
+      ),
+    ]));
   }
 }
 
 class PagePaddings extends EdgeInsets {
   const PagePaddings.all(super.value) : super.all();
-  const PagePaddings.formField() : super.only(right: 60, left: 60);
+  const PagePaddings.formField() : super.only(right: 60, left: 60, top: 40);
   const PagePaddings.onlyTop() : super.only(top: 20);
 }
