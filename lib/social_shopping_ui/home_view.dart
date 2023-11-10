@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
 
 class SocialShoppingHomeView extends StatefulWidget {
   const SocialShoppingHomeView({super.key});
@@ -10,6 +11,20 @@ class _SocialShoppingHomeViewState extends State<SocialShoppingHomeView> {
   final String _homeTitle = 'Home';
   final String _exploreText = 'Explore';
   final String _feedText = 'Feed';
+  final String _popularProducts = 'Popular Products';
+  final List dummyPersonNameList = [
+    'Jack',
+    'Jason',
+    'Will',
+    'Fig',
+    'Bryan',
+    'Fatih',
+    'Bob',
+    'Chris',
+    'Ollie',
+    'Nicolette'
+  ];
+  final String _specialProducts = 'Special Products';
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -25,7 +40,7 @@ class _SocialShoppingHomeViewState extends State<SocialShoppingHomeView> {
       ),
       body: Column(mainAxisSize: MainAxisSize.min, children: [
         Expanded(
-          flex: 1,
+          flex: 2,
           child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
@@ -42,7 +57,7 @@ class _SocialShoppingHomeViewState extends State<SocialShoppingHomeView> {
                       ),
                     ),
                   )),
-                  const Text("Jack")
+                  Text(dummyPersonNameList[index], style: Theme.of(context).textTheme.labelSmall)
                 ]);
               }),
         ),
@@ -52,8 +67,59 @@ class _SocialShoppingHomeViewState extends State<SocialShoppingHomeView> {
             TextButton(onPressed: () {}, child: Text(_feedText)),
           ],
         ),
-        const Spacer(
-          flex: 7,
+        Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(_popularProducts, style: Theme.of(context).textTheme.titleLarge),
+            ),
+          ],
+        ),
+        Expanded(
+            flex: 4,
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: 3,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Container(
+                    height: 400,
+                    width: 200,
+                    color: context.general.randomColor,
+                  ),
+                );
+              },
+            )),
+        Row(
+          children: [
+            Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(_specialProducts, style: Theme.of(context).textTheme.titleLarge)),
+          ],
+        ),
+        Expanded(
+          flex: 6,
+          child: ListView.builder(
+            itemCount: 4,
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(height: 80, width: 80, color: context.general.randomColor),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(height: 80, width: 80, color: context.general.randomColor),
+                  ),
+                ],
+              );
+            },
+          ),
         ),
       ]),
     );
