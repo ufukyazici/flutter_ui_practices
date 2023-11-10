@@ -14,9 +14,9 @@ class _SocialShoppingHomeViewState extends State<SocialShoppingHomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {}, shape: const CircleBorder(), child: const Icon(Icons.add_outlined, color: Colors.white)),
-      floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
+      // floatingActionButton: FloatingActionButton(
+      //     onPressed: () {}, shape: const CircleBorder(), child: const Icon(Icons.add_outlined, color: Colors.white)),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.miniCenterDocked,
       drawer: const Drawer(),
       appBar: AppBar(
         title: Text(_homeTitle),
@@ -56,12 +56,6 @@ class _SocialShoppingHomeViewState extends State<SocialShoppingHomeView> {
           flex: 7,
         ),
       ]),
-      // bottomNavigationBar: BottomNavigationBar(items: const [
-      //   BottomNavigationBarItem(icon: Icon(Icons.home_outlined, color: Colors.grey), label: ""),
-      //   BottomNavigationBarItem(icon: Icon(Icons.home_outlined, color: Colors.grey), label: ""),
-      //   BottomNavigationBarItem(icon: Icon(Icons.home_outlined, color: Colors.grey), label: ""),
-      //   BottomNavigationBarItem(icon: Icon(Icons.home_outlined, color: Colors.grey), label: ""),
-      // ]),
     );
   }
 }
