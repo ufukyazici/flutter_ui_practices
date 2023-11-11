@@ -91,10 +91,13 @@ class _SocialShoppingHomeViewState extends State<SocialShoppingHomeView> {
                   );
                 },
               )),
-          Row(
-            children: [
-              Text(_specialProducts, style: Theme.of(context).textTheme.titleLarge),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(top: 4.0),
+            child: Row(
+              children: [
+                Text(_specialProducts, style: Theme.of(context).textTheme.titleLarge),
+              ],
+            ),
           ),
           Expanded(
             flex: 4,
@@ -121,11 +124,16 @@ class _SocialShoppingHomeViewState extends State<SocialShoppingHomeView> {
               },
             ),
           ),
-          ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(backgroundColor: const Color(0xfff8947c)),
-              child: Text(_seeAllCategories,
-                  style: Theme.of(context).textTheme.labelMedium?.copyWith(color: Colors.white))),
+          Row(
+            children: [
+              Expanded(
+                  child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(backgroundColor: const Color(0xfff8947c)),
+                      child: Text(_seeAllCategories,
+                          style: Theme.of(context).textTheme.labelMedium?.copyWith(color: Colors.white)))),
+            ],
+          ),
         ]),
       ),
     );
