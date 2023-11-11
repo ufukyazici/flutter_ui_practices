@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_practices/social_shopping_ui/bottomnavbartest.dart';
+import 'package:flutter_ui_practices/social_shopping_ui/recommended_stores_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xfff84c64)),
         useMaterial3: true,
       ),
-      home: const BottomNavigationBarView(),
+      home: const RecommendedStoresView(),
     );
   }
 }
