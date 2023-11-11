@@ -19,17 +19,13 @@ class _RecommendedStoresViewState extends State<RecommendedStoresView> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(12),
-        child: Column(
-          children: [
-            ListView.builder(
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return StoreCardWidget(followText: _followText);
-              },
-            )
-          ],
+        child: ListView.builder(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          itemCount: 5,
+          itemBuilder: (context, index) {
+            return StoreCardWidget(followText: _followText);
+          },
         ),
       ),
     );
