@@ -55,27 +55,27 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
   return [
     PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.home),
-        activeColorPrimary: const Color(0xfff8947c),
+        activeColorPrimary: Colors.black,
         inactiveColorPrimary: CupertinoColors.systemGrey,
         title: "Home"),
     PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.book_circle),
-        activeColorPrimary: const Color(0xfff8947c),
+        activeColorPrimary: Colors.black,
         inactiveColorPrimary: CupertinoColors.systemGrey,
         title: 'Booking'),
     PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.settings),
-        activeColorPrimary: const Color(0xfff8947c),
+        activeColorPrimary: Colors.black,
         inactiveColorPrimary: CupertinoColors.systemGrey,
         title: 'Setting'),
     PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.calendar),
-        activeColorPrimary: const Color(0xfff8947c),
+        activeColorPrimary: Colors.black,
         inactiveColorPrimary: CupertinoColors.systemGrey,
         title: 'Calendar'),
     PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.person),
-        activeColorPrimary: const Color(0xfff8947c),
+        activeColorPrimary: Colors.black,
         inactiveColorPrimary: CupertinoColors.systemGrey,
         title: 'Profile'),
   ];
