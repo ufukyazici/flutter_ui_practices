@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_practices/social_shopping_ui/recommended_stores_view.dart';
+import 'package:flutter_ui_practices/dating_app_ui/dating_navbar_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xfff84c64)),
         useMaterial3: true,
       ),
-      home: const RecommendedStoresView(),
+      home: const DatingNavbarView(),
     );
   }
 }
