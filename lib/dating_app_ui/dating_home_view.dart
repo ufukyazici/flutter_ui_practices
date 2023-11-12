@@ -31,7 +31,7 @@ class _DatingHomeViewState extends State<DatingHomeView> {
                   Text(_todayText),
                   const Expanded(child: Divider(indent: 5, endIndent: 5))
                 ],
-              )
+              ),
             ],
           ),
         ),
