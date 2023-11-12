@@ -14,35 +14,60 @@ class _DatingHomeViewState extends State<DatingHomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Column(
-            children: [
-              ListTile(
-                title: Text(
-                  _title,
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              children: [
+                ListTile(
+                  title: Text(
+                    _title,
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(_titleDescription),
                 ),
-                subtitle: Text(_titleDescription),
-              ),
-              Row(
-                children: [
-                  const Expanded(child: Divider(indent: 5, endIndent: 5)),
-                  Text(_todayText),
-                  const Expanded(child: Divider(indent: 5, endIndent: 5))
-                ],
-              ),
-              ListView.builder(
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  return DatingAppPersonCard(
-                      imageUrl: _persons[index].imageUrl,
-                      personName: _persons[index].personName,
-                      personAge: _persons[index].personAge);
-                },
-              )
-            ],
+                Row(
+                  children: [
+                    const Expanded(child: Divider(indent: 5, endIndent: 5)),
+                    Text(_todayText),
+                    const Expanded(child: Divider(indent: 5, endIndent: 5))
+                  ],
+                ),
+                // GridView.custom(
+                //     shrinkWrap: true,
+                //     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                //     childrenDelegate: SliverChildBuilderDelegate((context, index) {
+                //       return DatingAppPersonCard(
+                //           imageUrl: _persons[index].imageUrl,
+                //           personName: _persons[index].personName,
+                //           personAge: _persons[index].personAge);
+                //     }, childCount: _persons.length))
+                GridView.builder(
+                  physics: const ScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: _persons.length,
+                  gridDelegate:
+                      const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 200 / 250),
+                  itemBuilder: (context, index) {
+                    return DatingAppPersonCard(
+                        imageUrl: _persons[index].imageUrl,
+                        personName: _persons[index].personName,
+                        personAge: _persons[index].personAge);
+                  },
+                )
+                // ListView.builder(
+                //   itemCount: 10,
+                //   itemBuilder: (context, index) {
+                //     return DatingAppPersonCard(
+                //         imageUrl: _persons[index].imageUrl,
+                //         personName: _persons[index].personName,
+                //         personAge: _persons[index].personAge);
+                //   },
+                // )
+              ],
+            ),
           ),
         ),
       ),
@@ -69,8 +94,8 @@ class DatingAppPersonCard extends StatelessWidget {
     return Stack(
       children: [
         SizedBox(
-          height: 225,
-          width: 180,
+          height: 250,
+          width: 200,
           child: Card(
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
@@ -82,7 +107,7 @@ class DatingAppPersonCard extends StatelessWidget {
           ),
         ),
         Positioned.fill(
-            top: 170,
+            top: 185,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Column(children: [
@@ -143,5 +168,10 @@ class DummpyDatingApp {
     DatingAppPersonModel(imageUrl: "https://picsum.photos/200/300?random=3", personName: "Lilia2", personAge: "34"),
     DatingAppPersonModel(imageUrl: "https://picsum.photos/200/300?random=4", personName: "Lilia3", personAge: "20"),
     DatingAppPersonModel(imageUrl: "https://picsum.photos/200/300?random=5", personName: "Lilia4", personAge: "40"),
+    DatingAppPersonModel(imageUrl: "https://picsum.photos/200/300?random=6", personName: "Lilia6", personAge: "19"),
+    DatingAppPersonModel(imageUrl: "https://picsum.photos/200/300?random=7", personName: "Lilia7", personAge: "22"),
+    DatingAppPersonModel(imageUrl: "https://picsum.photos/200/300?random=8", personName: "Lilia8", personAge: "34"),
+    DatingAppPersonModel(imageUrl: "https://picsum.photos/200/300?random=9", personName: "Lilia9", personAge: "20"),
+    DatingAppPersonModel(imageUrl: "https://picsum.photos/200/300?random=10", personName: "Lilia10", personAge: "40"),
   ];
 }
