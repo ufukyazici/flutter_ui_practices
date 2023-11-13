@@ -54,20 +54,35 @@ class ChatTabModel {
 
 class ChatTabModelDummy {
   List<ChatTabModel> chatsList = [
-    ChatTabModel(imageUrl: "https://picsum.photos/250?image=10", personName: "xd", message: "qweqweqwe", time: "12:00"),
-    ChatTabModel(imageUrl: "https://picsum.photos/250?image=11", personName: "zd", message: "eqwe", time: "9:00"),
     ChatTabModel(
-        imageUrl: "https://picsum.photos/250?image=12", personName: "ad", message: "sadasdasdasd", time: "3:00"),
+        imageUrl: "https://picsum.photos/250?image=10", personName: "Jack", message: "Hello bro sup?", time: "12:00"),
     ChatTabModel(
-        imageUrl: "https://picsum.photos/250?image=13", personName: "qe", message: "sadaasdasdsdasdasd", time: "6:00"),
+        imageUrl: "https://picsum.photos/250?image=11",
+        personName: "John",
+        message: "What's ur plan for today?",
+        time: "9:00"),
     ChatTabModel(
-        imageUrl: "https://picsum.photos/250?image=14", personName: "we", message: "sadaffffsdasdasd", time: "7:00"),
+        imageUrl: "https://picsum.photos/250?image=12", personName: "Bryan", message: "stfu bro ahaha", time: "3:00"),
     ChatTabModel(
-        imageUrl: "https://picsum.photos/250?image=15", personName: "rr", message: "sadqqqasdasdasd", time: "9:00"),
+        imageUrl: "https://picsum.photos/250?image=13",
+        personName: "Simple",
+        message: "very interesting personalities",
+        time: "6:00"),
     ChatTabModel(
-        imageUrl: "https://picsum.photos/250?image=16", personName: "tt", message: "sadarrrsdasdasd", time: "23:00"),
-    ChatTabModel(imageUrl: "https://picsum.photos/250?image=17", personName: "ff", message: "ttt", time: "22:00"),
-    ChatTabModel(imageUrl: "https://picsum.photos/250?image=18", personName: "<<xd>>", message: "hhhhh", time: "18:00"),
-    ChatTabModel(imageUrl: "https://picsum.photos/250?image=19", personName: "cc", message: "vvvv", time: "14:00"),
+        imageUrl: "https://picsum.photos/250?image=14", personName: "XANTARES", message: "damar gg", time: "7:00"),
+    ChatTabModel(
+        imageUrl: "https://picsum.photos/250?image=15",
+        personName: "calyx",
+        message: "smoke short please",
+        time: "9:00"),
+    ChatTabModel(
+        imageUrl: "https://picsum.photos/250?image=16", personName: "niko", message: "im the deag god", time: "23:00"),
+    ChatTabModel(
+        imageUrl: "https://picsum.photos/250?image=17",
+        personName: "BLACKEAGLE",
+        message: "im xxxxxxxx",
+        time: "22:00"),
+    ChatTabModel(imageUrl: "https://picsum.photos/250?image=18", personName: "imorr", message: "hhhhh", time: "18:00"),
+    ChatTabModel(imageUrl: "https://picsum.photos/250?image=19", personName: "m0nesy", message: "vvvv", time: "14:00"),
   ];
 }

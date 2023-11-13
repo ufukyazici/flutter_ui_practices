@@ -14,7 +14,10 @@ class _DatingChatViewState extends State<DatingChatView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // leading: IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back)),
         title: ListTile(
+          contentPadding: const EdgeInsets.all(0),
+          dense: true,
           leading: CircleAvatar(backgroundImage: NetworkImage(widget.imageUrl)),
           title: Text(widget.personName),
           subtitle: Row(children: [
