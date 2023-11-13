@@ -23,7 +23,10 @@ class _DatingChatsTabViewState extends State<DatingChatsTabView> {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              context.route.navigateToPage(const DatingChatView());
+              context.route.navigateToPage(DatingChatView(
+                imageUrl: _chatsList[index].imageUrl,
+                personName: _chatsList[index].personName,
+              ));
             },
             child: Card(
                 color: Colors.white,
