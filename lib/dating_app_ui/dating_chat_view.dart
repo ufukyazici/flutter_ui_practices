@@ -17,6 +17,7 @@ class _DatingChatViewState extends State<DatingChatView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: Colors.purpleAccent[100],
       appBar: AppBar(
         title: ListTile(
@@ -40,16 +41,33 @@ class _DatingChatViewState extends State<DatingChatView> {
           IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz_rounded))
         ],
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          if (_messages[index].sender == 'you') {
-            return YourMessagesWidget(message: _messages[index].message, messageTime: _messages[index].time);
-          } else if (_messages[index].sender == 'partner') {
-            return PartnerMessageWidget(
-                imageUrl: widget.imageUrl, message: _messages[index].message, messageTime: _messages[index].time);
-          }
-          return null;
-        },
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: _messages.length,
+              itemBuilder: (context, index) {
+                if (_messages[index].sender == 'you') {
+                  return YourMessagesWidget(message: _messages[index].message, messageTime: _messages[index].time);
+                } else if (_messages[index].sender == 'partner') {
+                  return PartnerMessageWidget(
+                      imageUrl: widget.imageUrl, message: _messages[index].message, messageTime: _messages[index].time);
+                }
+                return null;
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 6),
+            child: TextField(
+              decoration: InputDecoration(
+                  hintText: "Type a message",
+                  fillColor: Colors.white,
+                  filled: true,
+                  suffixIcon: IconButton(onPressed: () {}, icon: const Icon(Icons.send_rounded))),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -143,7 +161,11 @@ class ChatMessageModel {
 
 class ChatMessageDummy {
   final List<ChatMessageModel> messages = [
-    ChatMessageModel(sender: "partner", message: "Sounds good,i'll pick you up at 2 on saturday", time: "12:00AM"),
+    ChatMessageModel(
+        sender: "partner",
+        message:
+            "Sounds good,i'll pick you up at 2 on saturday.Sounds good,i'll pick you up at 2 on saturday.Sounds good,i'll pick you up at 2 on saturday.Sounds good,i'll pick you up at 2 on saturday.Sounds good,i'll pick you up at 2 on saturday",
+        time: "12:00AM"),
     ChatMessageModel(sender: "you", message: "Hello", time: "12:00AM"),
     ChatMessageModel(sender: "you", message: "I'm good, how about you?", time: "12:00AM"),
     ChatMessageModel(sender: "partner", message: "Nice to meet you!", time: "12:00AM"),
