@@ -10,6 +10,10 @@ class _BarberShopHomeViewState extends State<BarberShopHomeView> {
   final String _homeTitle = "Home";
   final BarberCustomerModel _customerModel = BarberCustomerModel(
       imageUrl: "https://picsum.photos/250?image=10", customerName: "Jake", customerSurname: "Weary");
+  final String _bestBarbersText = "Best Barbers";
+  final String _barberShopUrl =
+      "https://assets-global.website-files.com/64277851f4875994f6a5388e/642eba075b124573aacd3ff7_How-Much-Does-a-Barber-Make-960x640.jpg";
+  final String _barberStatus = "OPEN";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,10 +35,14 @@ class _BarberShopHomeViewState extends State<BarberShopHomeView> {
       body: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(children: [
-          Text("Hi, ${_customerModel.customerName} ${_customerModel.customerSurname}!",
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+          Row(
+            children: [
+              Text("Hi, ${_customerModel.customerName} ${_customerModel.customerSurname}!",
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+            ],
+          ),
           const Padding(
-            padding: EdgeInsets.only(top: 8.0),
+            padding: EdgeInsets.only(top: 20.0),
             child: TextField(
               decoration: InputDecoration(
                   hintText: 'Search', prefixIcon: Icon(Icons.search_outlined), border: OutlineInputBorder()),
@@ -51,6 +59,53 @@ class _BarberShopHomeViewState extends State<BarberShopHomeView> {
                 CategoryIconWidget(categoryHaircut: "Care", categoryIcon: Icon(Icons.face_retouching_natural)),
               ],
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: Row(
+              children: [
+                Text(
+                  _bestBarbersText,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: SizedBox(
+                  height: 200,
+                  width: 200,
+                  child: Card(
+                    child: Stack(children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.network(
+                          _barberShopUrl,
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                      Positioned(
+                          right: 5,
+                          top: 5,
+                          child: SizedBox(
+                            width: 60,
+                            height: 30,
+                            child: Card(
+                              color: Colors.green[50],
+                              child: Center(
+                                child: Text(_barberStatus,
+                                    style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.green)),
+                              ),
+                            ),
+                          ))
+                    ]),
+                  ),
+                ),
+              ),
+            ],
           )
         ]),
       ),
@@ -78,7 +133,7 @@ class CategoryIconWidget extends StatelessWidget {
             icon: Container(
                 height: 60,
                 width: 60,
-                decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+                decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xffeaebef)),
                 child: _categoryIcon)),
         Text(_categoryHaircut, style: Theme.of(context).textTheme.labelLarge)
       ],
