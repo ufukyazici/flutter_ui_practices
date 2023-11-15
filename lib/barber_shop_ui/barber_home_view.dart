@@ -12,6 +12,9 @@ class _BarberShopHomeViewState extends State<BarberShopHomeView> {
       imageUrl: "https://picsum.photos/250?image=10", customerName: "Jake", customerSurname: "Weary");
   final String _bestBarbersText = "Best Barbers";
   final List<BarberShopModel> _barberShopList = BarberShopsDummy().barberShopList;
+  final String _recommendedBarbersText = "Recommended Barbers";
+  final String _seeAllText = "See All";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,54 +35,106 @@ class _BarberShopHomeViewState extends State<BarberShopHomeView> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(12),
-        child: Column(children: [
-          Row(
-            children: [
-              Text("Hi, ${_customerModel.customerName} ${_customerModel.customerSurname}!",
-                  style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
-            ],
-          ),
-          const Padding(
-            padding: EdgeInsets.only(top: 20.0),
-            child: TextField(
-              decoration: InputDecoration(
-                  hintText: 'Search', prefixIcon: Icon(Icons.search_outlined), border: OutlineInputBorder()),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(top: 12.0),
-            child: CategoriesWidget(),
-          ),
-          Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Row(children: [
-                Text(_bestBarbersText,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(children: [
+            Row(
+              children: [
+                Text("Hi, ${_customerModel.customerName} ${_customerModel.customerSurname}!",
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
-              ])),
-          // BarberCardWidget(
-          //     barberShopUrl: _barberShopList[0].barberShopUrl,
-          //     barberStatus: _barberShopList[0].barberStatus,
-          //     barberShopName: _barberShopList[0].barberShopName,
-          //     shopLocation: _barberShopList[0].barberShopLocation,
-          //     shopRating: _barberShopList[0].barberShopRating,
-          //     shopReviews: _barberShopList[0].barberShopReviews)
-          Expanded(
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
+              ],
+            ),
+            const Padding(
+              padding: EdgeInsets.only(top: 20.0),
+              child: TextField(
+                decoration: InputDecoration(
+                    hintText: 'Search', prefixIcon: Icon(Icons.search_outlined), border: OutlineInputBorder()),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(top: 12.0),
+              child: CategoriesWidget(),
+            ),
+            Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Row(children: [
+                  Text(_bestBarbersText,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+                ])),
+            SizedBox(
+              height: 210,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                shrinkWrap: true,
+                itemCount: _barberShopList.length,
+                itemBuilder: (context, index) {
+                  return BarberCardWidget(
+                      barberShopUrl: _barberShopList[index].barberShopUrl,
+                      barberStatus: _barberShopList[index].barberStatus,
+                      barberShopName: _barberShopList[index].barberShopName,
+                      shopLocation: _barberShopList[index].barberShopLocation,
+                      shopRating: _barberShopList[index].barberShopRating,
+                      shopReviews: _barberShopList[index].barberShopReviews);
+                },
+              ),
+            ),
+            Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                  Text(_recommendedBarbersText,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold)),
+                  Text(_seeAllText,
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelLarge
+                          ?.copyWith(fontWeight: FontWeight.bold, color: Colors.grey)),
+                ])),
+            ListView.builder(
               shrinkWrap: true,
               itemCount: _barberShopList.length,
               itemBuilder: (context, index) {
-                return BarberCardWidget(
-                    barberShopUrl: _barberShopList[index].barberShopUrl,
-                    barberStatus: _barberShopList[index].barberStatus,
-                    barberShopName: _barberShopList[index].barberShopName,
-                    shopLocation: _barberShopList[index].barberShopLocation,
-                    shopRating: _barberShopList[index].barberShopRating,
-                    shopReviews: _barberShopList[index].barberShopReviews);
+                if (_barberShopList[index].isRecommended == true) {
+                  return RecommendedBarbersWidget(
+                      barberShopUrl: _barberShopList[index].barberShopUrl,
+                      barberShopName: _barberShopList[index].barberShopName,
+                      barberShopLocation: _barberShopList[index].barberShopLocation,
+                      barberShopRating: _barberShopList[index].barberShopRating.toString());
+                }
+                return const SizedBox();
               },
-            ),
-          )
-        ]),
+            )
+          ]),
+        ),
+      ),
+    );
+  }
+}
+
+class RecommendedBarbersWidget extends StatelessWidget {
+  const RecommendedBarbersWidget({
+    super.key,
+    required String barberShopUrl,
+    required String barberShopName,
+    required String barberShopLocation,
+    required String barberShopRating,
+  })  : _barberShopUrl = barberShopUrl,
+        _barberShopName = barberShopName,
+        _barberShopLocation = barberShopLocation,
+        _barberShopRating = barberShopRating;
+
+  final String _barberShopUrl;
+  final String _barberShopName;
+  final String _barberShopLocation;
+  final String _barberShopRating;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        leading: CircleAvatar(backgroundImage: NetworkImage(_barberShopUrl)),
+        title: Text(_barberShopName),
+        subtitle: Text(_barberShopLocation),
+        trailing: Text(_barberShopRating.toString()),
       ),
     );
   }
@@ -111,6 +166,7 @@ class BarberShopModel {
   final String barberShopLocation;
   final double barberShopRating;
   final int barberShopReviews;
+  final bool isRecommended;
 
   BarberShopModel(
       {required this.barberShopUrl,
@@ -118,7 +174,8 @@ class BarberShopModel {
       required this.barberShopName,
       required this.barberShopLocation,
       required this.barberShopRating,
-      required this.barberShopReviews});
+      required this.barberShopReviews,
+      required this.isRecommended});
 }
 
 class BarberShopsDummy {
@@ -130,31 +187,35 @@ class BarberShopsDummy {
         barberShopName: "Elite Barber",
         barberShopLocation: "Copenhag , Denmark",
         barberShopRating: 3.9,
-        barberShopReviews: 820),
+        barberShopReviews: 820,
+        isRecommended: false),
     BarberShopModel(
         barberShopUrl:
             "https://www.betterteam.com/images/barber-job-description-5184x3456-20201124.jpeg?crop=40:21,smart&width=1200&dpr=2",
         barberStatus: "CLOSE",
-        barberShopName: "Elite Barber",
+        barberShopName: "Elite Barber ",
         barberShopLocation: "Copenhag , Denmark",
         barberShopRating: 3.9,
-        barberShopReviews: 820),
+        barberShopReviews: 820,
+        isRecommended: true),
     BarberShopModel(
         barberShopUrl:
             "https://www.betterteam.com/images/barber-job-description-5184x3456-20201124.jpeg?crop=40:21,smart&width=1200&dpr=2",
         barberStatus: "CLOSE",
-        barberShopName: "Elite Barber",
+        barberShopName: "Elite BarberXD",
         barberShopLocation: "Copenhag , Denmark",
         barberShopRating: 3.9,
-        barberShopReviews: 820),
+        barberShopReviews: 820,
+        isRecommended: true),
     BarberShopModel(
         barberShopUrl:
             "https://www.betterteam.com/images/barber-job-description-5184x3456-20201124.jpeg?crop=40:21,smart&width=1200&dpr=2",
         barberStatus: "CLOSE",
-        barberShopName: "Elite Barber",
+        barberShopName: "Polite Barber",
         barberShopLocation: "Copenhag , Denmark",
         barberShopRating: 3.9,
-        barberShopReviews: 820),
+        barberShopReviews: 820,
+        isRecommended: true),
   ];
 }
 
