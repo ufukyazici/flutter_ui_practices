@@ -14,6 +14,8 @@ class _BarberShopHomeViewState extends State<BarberShopHomeView> {
   final String _barberShopUrl =
       "https://assets-global.website-files.com/64277851f4875994f6a5388e/642eba075b124573aacd3ff7_How-Much-Does-a-Barber-Make-960x640.jpg";
   final String _barberStatus = "OPEN";
+  final String _barberShopName = "Style Barber Shop";
+  final String _shopLocation = "New York, USA";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,20 +78,24 @@ class _BarberShopHomeViewState extends State<BarberShopHomeView> {
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: SizedBox(
-                  height: 200,
+                  height: 210,
                   width: 200,
                   child: Card(
+                    color: Colors.white,
                     child: Stack(children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.network(
-                          _barberShopUrl,
-                          fit: BoxFit.fitWidth,
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.network(
+                            _barberShopUrl,
+                            fit: BoxFit.fitWidth,
+                          ),
                         ),
                       ),
                       Positioned(
-                          right: 5,
-                          top: 5,
+                          right: 12,
+                          top: 12,
                           child: SizedBox(
                             width: 60,
                             height: 30,
@@ -99,6 +105,44 @@ class _BarberShopHomeViewState extends State<BarberShopHomeView> {
                                 child: Text(_barberStatus,
                                     style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.green)),
                               ),
+                            ),
+                          )),
+                      Positioned.fill(
+                        top: 115,
+                        child: ListTile(
+                          title: Text(
+                            _barberShopName,
+                            style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.black),
+                          ),
+                          subtitle: Padding(
+                            padding: const EdgeInsets.only(top: 4.0),
+                            child: Row(
+                              children: [
+                                const Icon(
+                                  Icons.location_on_outlined,
+                                  size: 20,
+                                ),
+                                Text(
+                                  _shopLocation,
+                                  style: Theme.of(context).textTheme.labelMedium?.copyWith(color: Colors.grey),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      const Positioned.fill(
+                          top: 170,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 12.0, top: 2),
+                            child: Row(
+                              children: [
+                                Icon(Icons.star, color: Colors.yellow, size: 18),
+                                Icon(Icons.star, color: Colors.yellow, size: 18),
+                                Icon(Icons.star, color: Colors.yellow, size: 18),
+                                Icon(Icons.star, color: Colors.yellow, size: 18),
+                                Icon(Icons.star, color: Colors.yellow, size: 18),
+                              ],
                             ),
                           ))
                     ]),
