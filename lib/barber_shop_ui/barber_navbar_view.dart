@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_practices/barber_shop_ui/barber_details_view.dart';
 import 'package:flutter_ui_practices/barber_shop_ui/barber_home_view.dart';
 import 'package:flutter_ui_practices/dating_app_ui/dating_chats_tab_view.dart';
 import 'package:flutter_ui_practices/red_triangle_ui/login_view.dart';
@@ -51,7 +52,19 @@ class BarberNavbarView extends StatelessWidget {
 List<Widget> _buildScreens() {
   return [
     const BarberShopHomeView(),
-    const LoginView(),
+    BarberDetailsView(
+      model: BarberShopModel(
+          barberShopUrl:
+              "https://static.wixstatic.com/media/f41e18_9a86e8323c924a84ab3bdecc8ab336b4~mv2.jpeg/v1/fit/w_2500,h_1330,al_c/f41e18_9a86e8323c924a84ab3bdecc8ab336b4~mv2.jpeg",
+          barberStatus: "OPEN",
+          barberShopName: "Elite Barber",
+          barberShopLocation: "Copenhag , Denmark",
+          barberShopRating: 3.9,
+          barberShopReviews: 820,
+          isRecommended: false,
+          aboutText:
+              "Proin ut sem aliquet leo consectetur rutrm eu sit amet lectus. Nunc vitae dapibus quam.Quisque eu barber bibendum eros.Pellentesque sed sapien."),
+    ),
     const DatingChatsTabView(),
     const LoginView(),
   ];

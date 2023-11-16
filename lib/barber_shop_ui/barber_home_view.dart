@@ -167,6 +167,7 @@ class BarberShopModel {
   final double barberShopRating;
   final int barberShopReviews;
   final bool isRecommended;
+  final String aboutText;
 
   BarberShopModel(
       {required this.barberShopUrl,
@@ -175,7 +176,8 @@ class BarberShopModel {
       required this.barberShopLocation,
       required this.barberShopRating,
       required this.barberShopReviews,
-      required this.isRecommended});
+      required this.isRecommended,
+      required this.aboutText});
 }
 
 class BarberShopsDummy {
@@ -188,7 +190,9 @@ class BarberShopsDummy {
         barberShopLocation: "Copenhag , Denmark",
         barberShopRating: 3.9,
         barberShopReviews: 820,
-        isRecommended: false),
+        isRecommended: false,
+        aboutText:
+            "Proin ut sem aliquet leo consectetur rutrm eu sit amet lectus. Nunc vitae dapibus quam.Quisque eu barber bibendum eros.Pellentesque sed sapien."),
     BarberShopModel(
         barberShopUrl:
             "https://www.betterteam.com/images/barber-job-description-5184x3456-20201124.jpeg?crop=40:21,smart&width=1200&dpr=2",
@@ -197,7 +201,9 @@ class BarberShopsDummy {
         barberShopLocation: "Copenhag , Denmark",
         barberShopRating: 3.9,
         barberShopReviews: 820,
-        isRecommended: true),
+        isRecommended: true,
+        aboutText:
+            "Proin ut sem aliquet leo consectetur rutrm eu sit amet lectus. Nunc vitae dapibus quam.Quisque eu barber bibendum eros.Pellentesque sed sapien."),
     BarberShopModel(
         barberShopUrl:
             "https://www.betterteam.com/images/barber-job-description-5184x3456-20201124.jpeg?crop=40:21,smart&width=1200&dpr=2",
@@ -206,7 +212,9 @@ class BarberShopsDummy {
         barberShopLocation: "Copenhag , Denmark",
         barberShopRating: 3.9,
         barberShopReviews: 820,
-        isRecommended: true),
+        isRecommended: true,
+        aboutText:
+            "Proin ut sem aliquet leo consectetur rutrm eu sit amet lectus. Nunc vitae dapibus quam.Quisque eu barber bibendum eros.Pellentesque sed sapien."),
     BarberShopModel(
         barberShopUrl:
             "https://www.betterteam.com/images/barber-job-description-5184x3456-20201124.jpeg?crop=40:21,smart&width=1200&dpr=2",
@@ -215,7 +223,9 @@ class BarberShopsDummy {
         barberShopLocation: "Copenhag , Denmark",
         barberShopRating: 3.9,
         barberShopReviews: 820,
-        isRecommended: true),
+        isRecommended: true,
+        aboutText:
+            "Proin ut sem aliquet leo consectetur rutrm eu sit amet lectus. Nunc vitae dapibus quam.Quisque eu barber bibendum eros.Pellentesque sed sapien."),
   ];
 }
 
