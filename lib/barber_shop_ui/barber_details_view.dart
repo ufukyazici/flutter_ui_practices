@@ -31,7 +31,36 @@ class _BarberDetailsViewState extends State<BarberDetailsView> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(12),
-        child: Column(children: [Image.network(widget.model.barberShopUrl)]),
+        child: Column(children: [
+          ClipRRect(borderRadius: BorderRadius.circular(20), child: Image.network(widget.model.barberShopUrl)),
+          ListTile(
+              title: Text(widget.model.barberShopName,
+                  style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
+              subtitle: Text(widget.model.barberShopLocation),
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(Icons.star, color: Colors.yellow),
+                  Text(widget.model.barberShopRating.toString())
+                ],
+              ))
+          // Padding(
+          //   padding: const EdgeInsets.only(top: 8.0),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Text(widget.model.barberShopName,
+          //           style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
+          //       Row(
+          //         children: [
+          //           const Icon(Icons.star, color: Colors.yellow),
+          //           Text(widget.model.barberShopRating.toString())
+          //         ],
+          //       )
+          //     ],
+          //   ),
+          // ),
+        ]),
       ),
     );
   }
