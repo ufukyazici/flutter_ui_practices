@@ -4,8 +4,13 @@ class GymnationRegisterView extends StatefulWidget {
   final String pageTitle;
   final String pageDescription;
   final String pageImageUrl;
+  final int pageId;
   const GymnationRegisterView(
-      {super.key, required this.pageTitle, required this.pageDescription, required this.pageImageUrl});
+      {super.key,
+      required this.pageTitle,
+      required this.pageDescription,
+      required this.pageImageUrl,
+      required this.pageId});
   @override
   State<GymnationRegisterView> createState() => _GymnationRegisterViewState();
 }
@@ -38,9 +43,15 @@ class _GymnationRegisterViewState extends State<GymnationRegisterView> {
             padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
             child: Row(
               children: [
-                Expanded(child: Divider(indent: 10, color: Colors.grey[850], thickness: 5)),
-                Expanded(child: Divider(indent: 10, color: Colors.grey[850], thickness: 5)),
-                Expanded(child: Divider(indent: 10, color: Colors.grey[850], thickness: 5)),
+                Expanded(
+                    child: Divider(
+                        indent: 10, color: widget.pageId == 1 ? Colors.yellow : Colors.grey[850], thickness: 5)),
+                Expanded(
+                    child: Divider(
+                        indent: 10, color: widget.pageId == 2 ? Colors.yellow : Colors.grey[850], thickness: 5)),
+                Expanded(
+                    child: Divider(
+                        indent: 10, color: widget.pageId == 3 ? Colors.yellow : Colors.grey[850], thickness: 5)),
               ],
             ),
           ),

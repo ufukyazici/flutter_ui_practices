@@ -29,11 +29,20 @@ class _GymnationPageViewState extends State<GymnationPageView> {
       scrollDirection: Axis.horizontal,
       children: [
         GymnationRegisterView(
-            pageTitle: _firstPageTitle, pageDescription: _firstPageDescription, pageImageUrl: _firstPageImageUrl),
+            pageTitle: _firstPageTitle,
+            pageDescription: _firstPageDescription,
+            pageImageUrl: _firstPageImageUrl,
+            pageId: 1),
         GymnationRegisterView(
-            pageTitle: _secondPageTitle, pageDescription: _secondPageDescription, pageImageUrl: _secondPageImageUrl),
+            pageTitle: _secondPageTitle,
+            pageDescription: _secondPageDescription,
+            pageImageUrl: _secondPageImageUrl,
+            pageId: 2),
         GymnationRegisterView(
-            pageTitle: _thirdPageTitle, pageDescription: _thirdPageDescription, pageImageUrl: _thirdPageImageUrl),
+            pageTitle: _thirdPageTitle,
+            pageDescription: _thirdPageDescription,
+            pageImageUrl: _thirdPageImageUrl,
+            pageId: 3),
       ],
     );
   }
