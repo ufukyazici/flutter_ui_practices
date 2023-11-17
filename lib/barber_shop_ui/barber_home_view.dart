@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_practices/barber_shop_ui/barber_details_view.dart';
+import 'package:kartal/kartal.dart';
 
 class BarberShopHomeView extends StatefulWidget {
   const BarberShopHomeView({super.key});
@@ -68,13 +70,18 @@ class _BarberShopHomeViewState extends State<BarberShopHomeView> {
                 shrinkWrap: true,
                 itemCount: _barberShopList.length,
                 itemBuilder: (context, index) {
-                  return BarberCardWidget(
-                      barberShopUrl: _barberShopList[index].barberShopUrl,
-                      barberStatus: _barberShopList[index].barberStatus,
-                      barberShopName: _barberShopList[index].barberShopName,
-                      shopLocation: _barberShopList[index].barberShopLocation,
-                      shopRating: _barberShopList[index].barberShopRating,
-                      shopReviews: _barberShopList[index].barberShopReviews);
+                  return InkWell(
+                    onTap: () {
+                      context.route.navigateToPage(BarberDetailsView(model: _barberShopList[index]));
+                    },
+                    child: BarberCardWidget(
+                        barberShopUrl: _barberShopList[index].barberShopUrl,
+                        barberStatus: _barberShopList[index].barberStatus,
+                        barberShopName: _barberShopList[index].barberShopName,
+                        shopLocation: _barberShopList[index].barberShopLocation,
+                        shopRating: _barberShopList[index].barberShopRating,
+                        shopReviews: _barberShopList[index].barberShopReviews),
+                  );
                 },
               ),
             ),
@@ -94,11 +101,16 @@ class _BarberShopHomeViewState extends State<BarberShopHomeView> {
               itemCount: _barberShopList.length,
               itemBuilder: (context, index) {
                 if (_barberShopList[index].isRecommended == true) {
-                  return RecommendedBarbersWidget(
-                      barberShopUrl: _barberShopList[index].barberShopUrl,
-                      barberShopName: _barberShopList[index].barberShopName,
-                      barberShopLocation: _barberShopList[index].barberShopLocation,
-                      barberShopRating: _barberShopList[index].barberShopRating.toString());
+                  return InkWell(
+                    onTap: () {
+                      context.route.navigateToPage(BarberDetailsView(model: _barberShopList[index]));
+                    },
+                    child: RecommendedBarbersWidget(
+                        barberShopUrl: _barberShopList[index].barberShopUrl,
+                        barberShopName: _barberShopList[index].barberShopName,
+                        barberShopLocation: _barberShopList[index].barberShopLocation,
+                        barberShopRating: _barberShopList[index].barberShopRating.toString()),
+                  );
                 }
                 return const SizedBox();
               },

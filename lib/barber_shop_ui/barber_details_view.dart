@@ -32,7 +32,14 @@ class _BarberDetailsViewState extends State<BarberDetailsView> {
       body: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(children: [
-          ClipRRect(borderRadius: BorderRadius.circular(20), child: Image.network(widget.model.barberShopUrl)),
+          ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.network(
+                widget.model.barberShopUrl,
+                height: 200,
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.fitWidth,
+              )),
           ListTile(
               title: Text(widget.model.barberShopName,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
