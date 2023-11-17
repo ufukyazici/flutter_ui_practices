@@ -43,23 +43,28 @@ class _BarberDetailsViewState extends State<BarberDetailsView> {
                   const Icon(Icons.star, color: Colors.yellow),
                   Text(widget.model.barberShopRating.toString())
                 ],
-              ))
-          // Padding(
-          //   padding: const EdgeInsets.only(top: 8.0),
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //     children: [
-          //       Text(widget.model.barberShopName,
-          //           style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold)),
-          //       Row(
-          //         children: [
-          //           const Icon(Icons.star, color: Colors.yellow),
-          //           Text(widget.model.barberShopRating.toString())
-          //         ],
-          //       )
-          //     ],
-          //   ),
-          // ),
+              )),
+          Row(
+            children: [
+              TextButton(onPressed: () {}, child: const Text("About")),
+              TextButton(onPressed: () {}, child: const Text("Reviews")),
+            ],
+          ),
+          Text(widget.model.aboutText),
+          const Spacer(),
+          Row(
+            children: [
+              Expanded(
+                  child: ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.blue[900])),
+                child: Text(
+                  'BOOK NOW',
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.white),
+                ),
+              )),
+            ],
+          )
         ]),
       ),
     );
