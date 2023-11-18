@@ -44,74 +44,109 @@ class _GymnationPageViewState extends State<GymnationPageView> {
         body: Column(
           children: [
             Expanded(
-              child: PageView(
-                onPageChanged: _changeToCurrentPageIndex,
-                scrollDirection: Axis.horizontal,
-                children: [
-                  GymnationRegisterView(
-                      pageTitle: _firstPageTitle,
-                      pageDescription: _firstPageDescription,
-                      pageImageUrl: _firstPageImageUrl),
-                  GymnationRegisterView(
-                      pageTitle: _secondPageTitle,
-                      pageDescription: _secondPageDescription,
-                      pageImageUrl: _secondPageImageUrl),
-                  GymnationRegisterView(
-                      pageTitle: _thirdPageTitle,
-                      pageDescription: _thirdPageDescription,
-                      pageImageUrl: _thirdPageImageUrl),
-                ],
-              ),
+              child: _pageView(),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
-              child: Row(
-                children: [
-                  Expanded(
-                      child: Divider(
-                          indent: 10, color: currentPageIndex == 0 ? Colors.yellow : Colors.grey[850], thickness: 5)),
-                  Expanded(
-                      child: Divider(
-                          indent: 10, color: currentPageIndex == 1 ? Colors.yellow : Colors.grey[850], thickness: 5)),
-                  Expanded(
-                      child: Divider(
-                          indent: 10, color: currentPageIndex == 2 ? Colors.yellow : Colors.grey[850], thickness: 5)),
-                ],
-              ),
+              child: _PageIndexDivider(currentPageIndex: currentPageIndex),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.yellow)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(14.0),
-                        child: Text(_buttonText,
-                            style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.black)),
-                      ),
-                    ),
-                  )
-                ],
-              ),
+              child: _BottomButtonWidget(buttonText: _buttonText),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(_memberText, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white)),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: Text(_signInText,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.yellow)),
-                  )
-                ],
-              ),
+              child: _BottomLoginText(memberText: _memberText, signInText: _signInText),
             )
           ],
         ));
+  }
+
+  PageView _pageView() {
+    return PageView(
+      onPageChanged: _changeToCurrentPageIndex,
+      scrollDirection: Axis.horizontal,
+      children: [
+        GymnationRegisterView(
+            pageTitle: _firstPageTitle, pageDescription: _firstPageDescription, pageImageUrl: _firstPageImageUrl),
+        GymnationRegisterView(
+            pageTitle: _secondPageTitle, pageDescription: _secondPageDescription, pageImageUrl: _secondPageImageUrl),
+        GymnationRegisterView(
+            pageTitle: _thirdPageTitle, pageDescription: _thirdPageDescription, pageImageUrl: _thirdPageImageUrl),
+      ],
+    );
+  }
+}
+
+class _BottomLoginText extends StatelessWidget {
+  const _BottomLoginText({
+    required String memberText,
+    required String signInText,
+  })  : _memberText = memberText,
+        _signInText = signInText;
+
+  final String _memberText;
+  final String _signInText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(_memberText, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white)),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Text(_signInText, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.yellow)),
+        )
+      ],
+    );
+  }
+}
+
+class _BottomButtonWidget extends StatelessWidget {
+  const _BottomButtonWidget({
+    required String buttonText,
+  }) : _buttonText = buttonText;
+
+  final String _buttonText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: ElevatedButton(
+            onPressed: () {},
+            style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.yellow)),
+            child: Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: Text(_buttonText, style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.black)),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class _PageIndexDivider extends StatelessWidget {
+  const _PageIndexDivider({
+    required this.currentPageIndex,
+  });
+
+  final int currentPageIndex;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+            child: Divider(indent: 10, color: currentPageIndex == 0 ? Colors.yellow : Colors.grey[850], thickness: 5)),
+        Expanded(
+            child: Divider(indent: 10, color: currentPageIndex == 1 ? Colors.yellow : Colors.grey[850], thickness: 5)),
+        Expanded(
+            child: Divider(indent: 10, color: currentPageIndex == 2 ? Colors.yellow : Colors.grey[850], thickness: 5)),
+      ],
+    );
   }
 }
