@@ -8,6 +8,9 @@ class GymnationPageView extends StatefulWidget {
 }
 
 class _GymnationPageViewState extends State<GymnationPageView> {
+  final String _buttonText = "TRY GYMNATION NOW";
+  final String _memberText = "Already a member?";
+  final String _signInText = "Sign in";
   final String _firstPageTitle = "PERSONALIZED PLANS";
   final String _secondPageTitle = "GOAL TRACKING";
   final String _thirdPageTitle = "SECURE AND SEAMLESS";
@@ -23,6 +26,13 @@ class _GymnationPageViewState extends State<GymnationPageView> {
   final String _thirdPageImageUrl =
       "https://i0.wp.com/post.healthline.com/wp-content/uploads/2023/02/female-dumbbells-1296x728-header-1296x729.jpg?w=1155&h=2268";
   final String _title = "GYMNATION";
+  int currentPageIndex = 0;
+
+  void _changeToCurrentPageIndex(int index) {
+    setState(() {
+      currentPageIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,24 +41,76 @@ class _GymnationPageViewState extends State<GymnationPageView> {
           title: Text(_title, style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
           centerTitle: true,
         ),
-        body: PageView(
-          scrollDirection: Axis.horizontal,
+        body: Column(
           children: [
-            GymnationRegisterView(
-                pageTitle: _firstPageTitle,
-                pageDescription: _firstPageDescription,
-                pageImageUrl: _firstPageImageUrl,
-                pageId: 1),
-            GymnationRegisterView(
-                pageTitle: _secondPageTitle,
-                pageDescription: _secondPageDescription,
-                pageImageUrl: _secondPageImageUrl,
-                pageId: 2),
-            GymnationRegisterView(
-                pageTitle: _thirdPageTitle,
-                pageDescription: _thirdPageDescription,
-                pageImageUrl: _thirdPageImageUrl,
-                pageId: 3),
+            Expanded(
+              child: PageView(
+                onPageChanged: _changeToCurrentPageIndex,
+                scrollDirection: Axis.horizontal,
+                children: [
+                  GymnationRegisterView(
+                      pageTitle: _firstPageTitle,
+                      pageDescription: _firstPageDescription,
+                      pageImageUrl: _firstPageImageUrl),
+                  GymnationRegisterView(
+                      pageTitle: _secondPageTitle,
+                      pageDescription: _secondPageDescription,
+                      pageImageUrl: _secondPageImageUrl),
+                  GymnationRegisterView(
+                      pageTitle: _thirdPageTitle,
+                      pageDescription: _thirdPageDescription,
+                      pageImageUrl: _thirdPageImageUrl),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: Divider(
+                          indent: 10, color: currentPageIndex == 0 ? Colors.yellow : Colors.grey[850], thickness: 5)),
+                  Expanded(
+                      child: Divider(
+                          indent: 10, color: currentPageIndex == 1 ? Colors.yellow : Colors.grey[850], thickness: 5)),
+                  Expanded(
+                      child: Divider(
+                          indent: 10, color: currentPageIndex == 2 ? Colors.yellow : Colors.grey[850], thickness: 5)),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.yellow)),
+                      child: Padding(
+                        padding: const EdgeInsets.all(14.0),
+                        child: Text(_buttonText,
+                            style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.black)),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(_memberText, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white)),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text(_signInText,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.yellow)),
+                  )
+                ],
+              ),
+            )
           ],
         ));
   }
