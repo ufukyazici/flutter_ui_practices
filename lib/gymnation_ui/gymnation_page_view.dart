@@ -22,28 +22,34 @@ class _GymnationPageViewState extends State<GymnationPageView> {
       "https://nextlevelfitness.com/wp-content/uploads/2021/08/gym-workout-routine-for-men.jpg";
   final String _thirdPageImageUrl =
       "https://i0.wp.com/post.healthline.com/wp-content/uploads/2023/02/female-dumbbells-1296x728-header-1296x729.jpg?w=1155&h=2268";
+  final String _title = "GYMNATION";
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      scrollDirection: Axis.horizontal,
-      children: [
-        GymnationRegisterView(
-            pageTitle: _firstPageTitle,
-            pageDescription: _firstPageDescription,
-            pageImageUrl: _firstPageImageUrl,
-            pageId: 1),
-        GymnationRegisterView(
-            pageTitle: _secondPageTitle,
-            pageDescription: _secondPageDescription,
-            pageImageUrl: _secondPageImageUrl,
-            pageId: 2),
-        GymnationRegisterView(
-            pageTitle: _thirdPageTitle,
-            pageDescription: _thirdPageDescription,
-            pageImageUrl: _thirdPageImageUrl,
-            pageId: 3),
-      ],
-    );
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(_title, style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
+          centerTitle: true,
+        ),
+        body: PageView(
+          scrollDirection: Axis.horizontal,
+          children: [
+            GymnationRegisterView(
+                pageTitle: _firstPageTitle,
+                pageDescription: _firstPageDescription,
+                pageImageUrl: _firstPageImageUrl,
+                pageId: 1),
+            GymnationRegisterView(
+                pageTitle: _secondPageTitle,
+                pageDescription: _secondPageDescription,
+                pageImageUrl: _secondPageImageUrl,
+                pageId: 2),
+            GymnationRegisterView(
+                pageTitle: _thirdPageTitle,
+                pageDescription: _thirdPageDescription,
+                pageImageUrl: _thirdPageImageUrl,
+                pageId: 3),
+          ],
+        ));
   }
 }
