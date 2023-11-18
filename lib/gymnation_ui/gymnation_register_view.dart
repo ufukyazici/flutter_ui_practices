@@ -17,6 +17,8 @@ class GymnationRegisterView extends StatefulWidget {
 
 class _GymnationRegisterViewState extends State<GymnationRegisterView> {
   final String _buttonText = "TRY GYMNATION NOW";
+  final String _memberText = "Already a member?";
+  final String _signInText = "Sign in";
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -69,6 +71,19 @@ class _GymnationRegisterViewState extends State<GymnationRegisterView> {
               ),
             )
           ],
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 20.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(_memberText, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white)),
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Text(_signInText, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.yellow)),
+              )
+            ],
+          ),
         )
       ]),
     );
