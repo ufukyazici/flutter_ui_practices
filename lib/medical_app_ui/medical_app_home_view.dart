@@ -11,10 +11,17 @@ class _MedicalAppHomeViewState extends State<MedicalAppHomeView> {
   final String _welcomeMessage = "Hello Jack!";
   final String _howAreYouFeelingToday = "How are you feeling today?";
   bool _isTipOfTheDayVisible = true;
+  int _selectedTab = 0;
 
   void changeVisibility() {
     setState(() {
       _isTipOfTheDayVisible = !_isTipOfTheDayVisible;
+    });
+  }
+
+  void changeSelectedTab(int index) {
+    setState(() {
+      _selectedTab = index;
     });
   }
 
@@ -79,12 +86,47 @@ class _MedicalAppHomeViewState extends State<MedicalAppHomeView> {
               ),
             ),
           ),
-          Row(
-            children: [
-              Expanded(child: MedicalAppButton(onPressed: () {}, buttonText: "Doctors")),
-              Expanded(child: MedicalAppButton(onPressed: () {}, buttonText: "Doctors")),
-              Expanded(child: MedicalAppButton(onPressed: () {}, buttonText: "Doctors")),
-            ],
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 15.0),
+            child: Container(
+              decoration: BoxDecoration(
+                  border: Border.all(color: const Color(0xff14334f)), borderRadius: BorderRadius.circular(12)),
+              height: MediaQuery.of(context).size.height * 0.058,
+              child: Row(
+                children: [
+                  Expanded(
+                      child: _selectedTab == 0
+                          ? MedicalAppButton(onPressed: () {}, buttonText: "Doctors")
+                          : MedicalAppButton(
+                              onPressed: () {
+                                changeSelectedTab(0);
+                              },
+                              buttonText: "Doctors",
+                              buttonColor: Colors.white,
+                              textColor: const Color(0xff14334f))),
+                  Expanded(
+                      child: _selectedTab == 1
+                          ? MedicalAppButton(onPressed: () {}, buttonText: "Doctors")
+                          : MedicalAppButton(
+                              onPressed: () {
+                                changeSelectedTab(1);
+                              },
+                              buttonText: "Doctors",
+                              buttonColor: Colors.white,
+                              textColor: const Color(0xff14334f))),
+                  Expanded(
+                      child: _selectedTab == 2
+                          ? MedicalAppButton(onPressed: () {}, buttonText: "Doctors")
+                          : MedicalAppButton(
+                              onPressed: () {
+                                changeSelectedTab(2);
+                              },
+                              buttonText: "Doctors",
+                              buttonColor: Colors.white,
+                              textColor: const Color(0xff14334f))),
+                ],
+              ),
+            ),
           )
         ]),
       ),
