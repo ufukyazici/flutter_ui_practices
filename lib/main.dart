@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_practices/gymnation_ui/gymnation_page_view.dart';
+import 'package:flutter_ui_practices/medical_app_ui/get_started_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData.dark(
+      theme: ThemeData.light(
         // This is the theme of your application.
         //
         // TRY THIS: Try running your application with "flutter run". You'll see
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
 
         useMaterial3: true,
       ),
-      home: const GymnationPageView(),
+      home: const GetStartedView(),
     );
   }
 }
