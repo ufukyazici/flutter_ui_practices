@@ -12,6 +12,11 @@ class _MedicalAppHomeViewState extends State<MedicalAppHomeView> {
   final String _howAreYouFeelingToday = "How are you feeling today?";
   bool _isTipOfTheDayVisible = true;
   int _selectedTab = 0;
+  final String _firstCardTitle = "Therapist";
+  final String _secondCardTitle = "Surgeon";
+  final String _thirdCardTitle = "Ophthalmologist";
+  final String _placeHolderSubtitle = "General medical practitioner who specializes in the diagnosis";
+  final String _firstCardImageUrl = "https://cdn3.iconfinder.com/data/icons/medical-isometric-1/512/ic_drugs.png";
 
   void changeVisibility() {
     setState(() {
@@ -106,29 +111,81 @@ class _MedicalAppHomeViewState extends State<MedicalAppHomeView> {
                               textColor: const Color(0xff14334f))),
                   Expanded(
                       child: _selectedTab == 1
-                          ? MedicalAppButton(onPressed: () {}, buttonText: "Doctors")
+                          ? MedicalAppButton(onPressed: () {}, buttonText: "Advice")
                           : MedicalAppButton(
                               onPressed: () {
                                 changeSelectedTab(1);
                               },
-                              buttonText: "Doctors",
+                              buttonText: "Advice",
                               buttonColor: Colors.white,
                               textColor: const Color(0xff14334f))),
                   Expanded(
                       child: _selectedTab == 2
-                          ? MedicalAppButton(onPressed: () {}, buttonText: "Doctors")
+                          ? MedicalAppButton(onPressed: () {}, buttonText: "Nearest")
                           : MedicalAppButton(
                               onPressed: () {
                                 changeSelectedTab(2);
                               },
-                              buttonText: "Doctors",
+                              buttonText: "Nearest",
                               buttonColor: Colors.white,
                               textColor: const Color(0xff14334f))),
                 ],
               ),
             ),
-          )
+          ),
+          Row(
+            children: [
+              Text("Find the right doctor by category",
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelLarge
+                      ?.copyWith(fontWeight: FontWeight.bold, color: const Color(0xff14334f))),
+            ],
+          ),
+          CategoryCardWidget(
+              firstCardImageUrl: _firstCardImageUrl,
+              firstCardTitle: _firstCardTitle,
+              placeHolderSubtitle: _placeHolderSubtitle),
+          CategoryCardWidget(
+              firstCardImageUrl: _firstCardImageUrl,
+              firstCardTitle: _secondCardTitle,
+              placeHolderSubtitle: _placeHolderSubtitle),
+          CategoryCardWidget(
+              firstCardImageUrl: _firstCardImageUrl,
+              firstCardTitle: _thirdCardTitle,
+              placeHolderSubtitle: _placeHolderSubtitle),
         ]),
+      ),
+    );
+  }
+}
+
+class CategoryCardWidget extends StatelessWidget {
+  const CategoryCardWidget({
+    super.key,
+    required String firstCardImageUrl,
+    required String firstCardTitle,
+    required String placeHolderSubtitle,
+  })  : _firstCardImageUrl = firstCardImageUrl,
+        _firstCardTitle = firstCardTitle,
+        _placeHolderSubtitle = placeHolderSubtitle;
+
+  final String _firstCardImageUrl;
+  final String _firstCardTitle;
+  final String _placeHolderSubtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        contentPadding: const EdgeInsets.all(20),
+        leading: Image.network(_firstCardImageUrl),
+        title: Text(_firstCardTitle,
+            style: Theme.of(context)
+                .textTheme
+                .labelLarge
+                ?.copyWith(fontWeight: FontWeight.bold, color: const Color(0xff14334f))),
+        subtitle: Text(_placeHolderSubtitle),
       ),
     );
   }
