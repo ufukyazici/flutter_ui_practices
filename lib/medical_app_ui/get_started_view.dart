@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_practices/barber_shop_ui/barber_home_view.dart';
 import 'package:flutter_ui_practices/medical_app_ui/medical_app_button.dart';
+import 'package:flutter_ui_practices/medical_app_ui/medical_navbar_view.dart';
 import 'package:flutter_ui_practices/product/extension/png_image_extension.dart';
 import 'package:kartal/kartal.dart';
 
@@ -35,7 +35,7 @@ class _GetStartedViewState extends State<GetStartedView> {
               child: MedicalAppButton(
                 buttonText: _buttonText,
                 onPressed: () {
-                  context.route.navigateToPage(const BarberShopHomeView());
+                  context.route.navigateToPage(const MedicalNavbarView());
                 },
               ),
             )
