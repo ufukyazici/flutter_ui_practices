@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_practices/medical_app_ui/get_started_view.dart';
+import 'package:flutter_ui_practices/diving_app_ui/diving_app_navbar_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
 
         useMaterial3: true,
       ),
-      home: const GetStartedView(),
+      home: const DivingAppNavbarView(),
     );
   }
 }
