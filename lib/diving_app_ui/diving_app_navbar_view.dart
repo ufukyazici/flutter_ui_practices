@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_practices/dating_app_ui/dating_chats_tab_view.dart';
-import 'package:flutter_ui_practices/dating_app_ui/dating_home_view.dart';
+import 'package:flutter_ui_practices/diving_app_ui/diving_app_home_view.dart';
 import 'package:flutter_ui_practices/red_triangle_ui/login_view.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -49,7 +49,7 @@ class DivingAppNavbarView extends StatelessWidget {
 }
 
 List<Widget> _buildScreens() {
-  return [const DatingHomeView(), const LoginView(), const DatingChatsTabView(), const LoginView()];
+  return [const DivingAppHomeView(), const LoginView(), const DatingChatsTabView(), const LoginView()];
 }
 
 List<PersistentBottomNavBarItem> _navBarsItems() {
