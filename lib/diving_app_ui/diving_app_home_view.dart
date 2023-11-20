@@ -45,6 +45,38 @@ class _DivingAppHomeViewState extends State<DivingAppHomeView> {
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold))
                 ],
               ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.45,
+              width: MediaQuery.of(context).size.width * 0.55,
+              child: Card(
+                child: Column(children: [
+                  ClipRRect(
+                      borderRadius:
+                          const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+                      child: Image.network(_profileImageUrl)),
+                  ListTile(
+                    title: Text(
+                      "Philippines",
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    subtitle: Text(
+                      "58 exclusive dive sites",
+                      style: Theme.of(context).textTheme.labelSmall?.copyWith(color: Colors.grey),
+                    ),
+                    trailing: Container(
+                      height: 25,
+                      width: 25,
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.blue),
+                      child: const Icon(
+                        Icons.arrow_forward,
+                        size: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+                ]),
+              ),
             )
           ],
         ),
