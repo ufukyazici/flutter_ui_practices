@@ -46,7 +46,8 @@ class _DivingAppHomeViewState extends State<DivingAppHomeView> {
                 ],
               ),
             ),
-            Expanded(
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.48,
               child: ListView.builder(
                 itemCount: 5,
                 shrinkWrap: true,
@@ -55,6 +56,12 @@ class _DivingAppHomeViewState extends State<DivingAppHomeView> {
                   return CountryWidget(profileImageUrl: _profileImageUrl);
                 },
               ),
+            ),
+            Row(
+              children: [
+                Text(_bestDiveSites,
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold))
+              ],
             )
           ],
         ),
