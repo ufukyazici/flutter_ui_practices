@@ -46,19 +46,15 @@ class _DivingAppHomeViewState extends State<DivingAppHomeView> {
                 ],
               ),
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: 5,
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return CountryWidget(profileImageUrl: _profileImageUrl);
-                    },
-                  ),
-                ),
-              ],
+            Expanded(
+              child: ListView.builder(
+                itemCount: 5,
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return CountryWidget(profileImageUrl: _profileImageUrl);
+                },
+              ),
             )
           ],
         ),
