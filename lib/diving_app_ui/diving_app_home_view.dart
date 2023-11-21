@@ -46,80 +46,114 @@ class _DivingAppHomeViewState extends State<DivingAppHomeView> {
                 ],
               ),
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.48,
-              width: MediaQuery.of(context).size.width * 0.55,
-              child: Card(
-                child: Column(children: [
-                  ClipRRect(
-                      borderRadius:
-                          const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-                      child: Image.network(_profileImageUrl)),
-                  ListTile(
-                    title: Text(
-                      "Philippines",
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    subtitle: Text(
-                      "58 exclusive dive sites",
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(color: Colors.grey),
-                    ),
-                    trailing: Container(
-                      height: 25,
-                      width: 25,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.blue),
-                      child: const Icon(
-                        Icons.arrow_forward,
-                        size: 20,
-                        color: Colors.white,
-                      ),
-                    ),
+            Row(
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: 5,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return CountryWidget(profileImageUrl: _profileImageUrl);
+                    },
                   ),
-                  Stack(
-                    children: [
-                      const SizedBox(
-                        height: 35,
-                        width: 400,
-                      ),
-                      Positioned(
-                          child: CircleAvatar(
-                        backgroundImage: NetworkImage(_profileImageUrl),
-                      )),
-                      Positioned(
-                          left: 20,
-                          child: CircleAvatar(
-                            backgroundImage: NetworkImage(_profileImageUrl),
-                          )),
-                      Positioned(
-                          left: 40,
-                          child: CircleAvatar(
-                            backgroundImage: NetworkImage(_profileImageUrl),
-                          )),
-                      Positioned(
-                          left: 60,
-                          child: CircleAvatar(
-                            backgroundImage: NetworkImage(_profileImageUrl),
-                          )),
-                      Positioned(
-                          left: 80,
-                          child: CircleAvatar(
-                            backgroundImage: NetworkImage(_profileImageUrl),
-                          )),
-                      Positioned(
-                          left: 125,
-                          top: 11,
-                          child: Text(
-                            "+357 people",
-                            style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.grey),
-                          ))
-                    ],
-                  )
-                ]),
-              ),
+                ),
+              ],
             )
           ],
         ),
       ),
     );
   }
+}
+
+class CountryWidget extends StatelessWidget {
+  const CountryWidget({
+    super.key,
+    required String profileImageUrl,
+  }) : _profileImageUrl = profileImageUrl;
+
+  final String _profileImageUrl;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.48,
+      width: MediaQuery.of(context).size.width * 0.55,
+      child: Card(
+        child: Column(children: [
+          ClipRRect(
+              borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+              child: Image.network(_profileImageUrl)),
+          ListTile(
+            title: Text(
+              "Philippines",
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold),
+            ),
+            subtitle: Text(
+              "58 exclusive dive sites",
+              style: Theme.of(context).textTheme.labelSmall?.copyWith(color: Colors.grey),
+            ),
+            trailing: Container(
+              height: 25,
+              width: 25,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: Colors.blue),
+              child: const Icon(
+                Icons.arrow_forward,
+                size: 20,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          Stack(
+            children: [
+              const SizedBox(
+                height: 35,
+                width: 400,
+              ),
+              Positioned(
+                  child: CircleAvatar(
+                backgroundImage: NetworkImage(_profileImageUrl),
+              )),
+              Positioned(
+                  left: 20,
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(_profileImageUrl),
+                  )),
+              Positioned(
+                  left: 40,
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(_profileImageUrl),
+                  )),
+              Positioned(
+                  left: 60,
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(_profileImageUrl),
+                  )),
+              Positioned(
+                  left: 80,
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(_profileImageUrl),
+                  )),
+              Positioned(
+                  left: 125,
+                  top: 11,
+                  child: Text(
+                    "+357 people",
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.grey),
+                  ))
+            ],
+          )
+        ]),
+      ),
+    );
+  }
+}
+
+class DivingAppCountryModel {
+  final String countryName;
+  final int countryDiveSitesCount;
+  final String countryDetail;
+
+  DivingAppCountryModel({required this.countryName, required this.countryDiveSitesCount, required this.countryDetail});
 }
