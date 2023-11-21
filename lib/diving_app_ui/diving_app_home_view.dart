@@ -47,7 +47,7 @@ class _DivingAppHomeViewState extends State<DivingAppHomeView> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.45,
+              height: MediaQuery.of(context).size.height * 0.48,
               width: MediaQuery.of(context).size.width * 0.55,
               child: Card(
                 child: Column(children: [
@@ -74,6 +74,45 @@ class _DivingAppHomeViewState extends State<DivingAppHomeView> {
                         color: Colors.white,
                       ),
                     ),
+                  ),
+                  Stack(
+                    children: [
+                      const SizedBox(
+                        height: 35,
+                        width: 400,
+                      ),
+                      Positioned(
+                          child: CircleAvatar(
+                        backgroundImage: NetworkImage(_profileImageUrl),
+                      )),
+                      Positioned(
+                          left: 20,
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(_profileImageUrl),
+                          )),
+                      Positioned(
+                          left: 40,
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(_profileImageUrl),
+                          )),
+                      Positioned(
+                          left: 60,
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(_profileImageUrl),
+                          )),
+                      Positioned(
+                          left: 80,
+                          child: CircleAvatar(
+                            backgroundImage: NetworkImage(_profileImageUrl),
+                          )),
+                      Positioned(
+                          left: 125,
+                          top: 11,
+                          child: Text(
+                            "+357 people",
+                            style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.grey),
+                          ))
+                    ],
                   )
                 ]),
               ),
