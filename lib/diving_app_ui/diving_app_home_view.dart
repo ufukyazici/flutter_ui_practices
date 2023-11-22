@@ -12,6 +12,7 @@ class _DivingAppHomeViewState extends State<DivingAppHomeView> {
   final String _bestDiveSites = "Best Dive sites";
   final String _profileImageUrl = "https://picsum.photos/250?image=10";
   final List<DivingAppCountryModel> _countries = DummyDivingCountries().countries;
+  final List<DiveSitesModel> _diveSites = DummyDiveSites().diveSites;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +74,37 @@ class _DivingAppHomeViewState extends State<DivingAppHomeView> {
               SizedBox(
                 height: 100,
                 width: MediaQuery.of(context).size.width,
-                child: const Card(),
+                child: Card(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Image.network(_diveSites[0].diveSiteImageUrl),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            _diveSites[0].diveSiteName,
+                            style: Theme.of(context).textTheme.labelLarge?.copyWith(fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            _diveSites[0].diveSiteLocation,
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelSmall
+                                ?.copyWith(fontWeight: FontWeight.bold, color: Colors.grey),
+                          ),
+                          Text("\$ ${_diveSites[0].diveSitePrice.toString()}/person"),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(_diveSites[0].diveSiteRating.toString()),
+                          const Icon(Icons.star, color: Colors.yellow)
+                        ],
+                      )
+                    ],
+                  ),
+                ),
               )
             ],
           ),
