@@ -23,52 +23,60 @@ class _DivingAppHomeViewState extends State<DivingAppHomeView> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                  hintText: "Search",
-                  border: const OutlineInputBorder(),
-                  suffixIcon: Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: Container(
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.blue),
-                        height: 10,
-                        width: 10,
-                        child: const Icon(Icons.search, color: Colors.white)),
-                  )),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Row(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            children: [
+              TextField(
+                decoration: InputDecoration(
+                    hintText: "Search",
+                    border: const OutlineInputBorder(),
+                    suffixIcon: Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Container(
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.blue),
+                          height: 10,
+                          width: 10,
+                          child: const Icon(Icons.search, color: Colors.white)),
+                    )),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Row(
+                  children: [
+                    Text(_popularCountry,
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold))
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.48,
+                child: ListView.builder(
+                  itemCount: _countries.length,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return CountryWidget(
+                        countryImageUrl: _countries[index].countryImageUrl,
+                        countryName: _countries[index].countryName,
+                        countryDiveSitesCount: _countries[index].countryDiveSitesCount,
+                        countryDiversCount: _countries[index].countryDiversCount);
+                  },
+                ),
+              ),
+              Row(
                 children: [
-                  Text(_popularCountry,
+                  Text(_bestDiveSites,
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold))
                 ],
               ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.48,
-              child: ListView.builder(
-                itemCount: _countries.length,
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return CountryWidget(
-                      countryImageUrl: _countries[index].countryImageUrl,
-                      countryName: _countries[index].countryName,
-                      countryDiveSitesCount: _countries[index].countryDiveSitesCount,
-                      countryDiversCount: _countries[index].countryDiversCount);
-                },
-              ),
-            ),
-            Row(
-              children: [
-                Text(_bestDiveSites,
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold))
-              ],
-            )
-          ],
+              SizedBox(
+                height: 100,
+                width: MediaQuery.of(context).size.width,
+                child: const Card(),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -207,5 +215,37 @@ class DummyDivingCountries {
         countryDiveSitesCount: 88,
         countryDiversCount: 743,
         countryImageUrl: "https://picsum.photos/250?image=14")
+  ];
+}
+
+class DiveSitesModel {
+  final String diveSiteImageUrl;
+  final String diveSiteName;
+  final String diveSiteLocation;
+  final int diveSitePrice;
+  final double diveSiteRating;
+
+  DiveSitesModel(
+      {required this.diveSiteImageUrl,
+      required this.diveSiteName,
+      required this.diveSiteLocation,
+      required this.diveSitePrice,
+      required this.diveSiteRating});
+}
+
+class DummyDiveSites {
+  List<DiveSitesModel> diveSites = [
+    DiveSitesModel(
+        diveSiteImageUrl: "https://picsum.photos/250?image=10",
+        diveSiteName: "Blue Sea Dive Sites",
+        diveSiteLocation: "Wllington, New Zeland",
+        diveSitePrice: 370,
+        diveSiteRating: 4.9),
+    DiveSitesModel(
+        diveSiteImageUrl: "https://picsum.photos/250?image=11",
+        diveSiteName: "Big Dive Sea",
+        diveSiteLocation: "Manila, Philippines",
+        diveSitePrice: 200,
+        diveSiteRating: 4.8),
   ];
 }
