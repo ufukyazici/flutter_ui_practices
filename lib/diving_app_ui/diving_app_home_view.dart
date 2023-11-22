@@ -11,6 +11,7 @@ class _DivingAppHomeViewState extends State<DivingAppHomeView> {
   final String _popularCountry = "Popular Country";
   final String _bestDiveSites = "Best Dive sites";
   final String _profileImageUrl = "https://picsum.photos/250?image=10";
+  final List<DivingAppCountryModel> _countries = DummyDivingCountries().countries;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,11 +50,15 @@ class _DivingAppHomeViewState extends State<DivingAppHomeView> {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.48,
               child: ListView.builder(
-                itemCount: 5,
+                itemCount: _countries.length,
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
-                  return CountryWidget(profileImageUrl: _profileImageUrl);
+                  return CountryWidget(
+                      countryImageUrl: _countries[index].countryImageUrl,
+                      countryName: _countries[index].countryName,
+                      countryDiveSitesCount: _countries[index].countryDiveSitesCount,
+                      countryDiversCount: _countries[index].countryDiversCount);
                 },
               ),
             ),
@@ -71,12 +76,21 @@ class _DivingAppHomeViewState extends State<DivingAppHomeView> {
 }
 
 class CountryWidget extends StatelessWidget {
-  const CountryWidget({
-    super.key,
-    required String profileImageUrl,
-  }) : _profileImageUrl = profileImageUrl;
+  const CountryWidget(
+      {super.key,
+      required String countryImageUrl,
+      required String countryName,
+      required int countryDiveSitesCount,
+      required int countryDiversCount})
+      : _countryImageUrl = countryImageUrl,
+        _countryName = countryName,
+        _countryDiveSitesCount = countryDiveSitesCount,
+        _countryDiversCount = countryDiversCount;
 
-  final String _profileImageUrl;
+  final String _countryImageUrl;
+  final String _countryName;
+  final int _countryDiveSitesCount;
+  final int _countryDiversCount;
 
   @override
   Widget build(BuildContext context) {
@@ -87,14 +101,14 @@ class CountryWidget extends StatelessWidget {
         child: Column(children: [
           ClipRRect(
               borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-              child: Image.network(_profileImageUrl)),
+              child: Image.network(_countryImageUrl)),
           ListTile(
             title: Text(
-              "Philippines",
+              _countryName,
               style: Theme.of(context).textTheme.labelSmall?.copyWith(fontWeight: FontWeight.bold),
             ),
             subtitle: Text(
-              "58 exclusive dive sites",
+              "$_countryDiveSitesCount exclusive dive sites",
               style: Theme.of(context).textTheme.labelSmall?.copyWith(color: Colors.grey),
             ),
             trailing: Container(
@@ -116,33 +130,33 @@ class CountryWidget extends StatelessWidget {
               ),
               Positioned(
                   child: CircleAvatar(
-                backgroundImage: NetworkImage(_profileImageUrl),
+                backgroundImage: NetworkImage(_countryImageUrl),
               )),
               Positioned(
                   left: 20,
                   child: CircleAvatar(
-                    backgroundImage: NetworkImage(_profileImageUrl),
+                    backgroundImage: NetworkImage(_countryImageUrl),
                   )),
               Positioned(
                   left: 40,
                   child: CircleAvatar(
-                    backgroundImage: NetworkImage(_profileImageUrl),
+                    backgroundImage: NetworkImage(_countryImageUrl),
                   )),
               Positioned(
                   left: 60,
                   child: CircleAvatar(
-                    backgroundImage: NetworkImage(_profileImageUrl),
+                    backgroundImage: NetworkImage(_countryImageUrl),
                   )),
               Positioned(
                   left: 80,
                   child: CircleAvatar(
-                    backgroundImage: NetworkImage(_profileImageUrl),
+                    backgroundImage: NetworkImage(_countryImageUrl),
                   )),
               Positioned(
                   left: 125,
                   top: 11,
                   child: Text(
-                    "+357 people",
+                    "+$_countryDiversCount people",
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.grey),
                   ))
             ],
@@ -154,9 +168,44 @@ class CountryWidget extends StatelessWidget {
 }
 
 class DivingAppCountryModel {
+  final String countryImageUrl;
   final String countryName;
   final int countryDiveSitesCount;
-  final String countryDetail;
+  final int countryDiversCount;
 
-  DivingAppCountryModel({required this.countryName, required this.countryDiveSitesCount, required this.countryDetail});
+  DivingAppCountryModel(
+      {required this.countryName,
+      required this.countryDiveSitesCount,
+      required this.countryDiversCount,
+      required this.countryImageUrl});
+}
+
+class DummyDivingCountries {
+  List<DivingAppCountryModel> countries = [
+    DivingAppCountryModel(
+        countryName: "Philippines",
+        countryDiveSitesCount: 58,
+        countryDiversCount: 357,
+        countryImageUrl: "https://picsum.photos/250?image=10"),
+    DivingAppCountryModel(
+        countryName: "Indonesia",
+        countryDiveSitesCount: 140,
+        countryDiversCount: 248,
+        countryImageUrl: "https://picsum.photos/250?image=11"),
+    DivingAppCountryModel(
+        countryName: "Egypt",
+        countryDiveSitesCount: 13,
+        countryDiversCount: 142,
+        countryImageUrl: "https://picsum.photos/250?image=12"),
+    DivingAppCountryModel(
+        countryName: "Turkiye",
+        countryDiveSitesCount: 34,
+        countryDiversCount: 669,
+        countryImageUrl: "https://picsum.photos/250?image=13"),
+    DivingAppCountryModel(
+        countryName: "Denmark",
+        countryDiveSitesCount: 88,
+        countryDiversCount: 743,
+        countryImageUrl: "https://picsum.photos/250?image=14")
+  ];
 }
