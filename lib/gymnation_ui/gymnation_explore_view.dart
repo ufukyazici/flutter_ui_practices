@@ -30,80 +30,114 @@ class _GymnationExploreViewState extends State<GymnationExploreView> {
         padding: const EdgeInsets.symmetric(horizontal: 22.0, vertical: 12),
         child: Column(
           children: [
-            Container(
-              height: 100,
-              width: MediaQuery.of(context).size.width,
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.yellow)),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "START TODAY",
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelLarge
-                              ?.copyWith(color: Colors.yellow, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "Streak",
-                          style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.yellow),
-                        ),
-                      ],
-                    ),
-                    const VerticalDivider(
-                      color: Colors.yellow,
-                      thickness: 0.5,
-                      indent: 20,
-                      endIndent: 20,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "2/4",
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelLarge
-                              ?.copyWith(color: Colors.yellow, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "Workout Goal",
-                          style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.yellow),
-                        ),
-                      ],
-                    ),
-                    const VerticalDivider(
-                      color: Colors.yellow,
-                      thickness: 0.5,
-                      indent: 20,
-                      endIndent: 20,
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "120",
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelLarge
-                              ?.copyWith(color: Colors.yellow, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "Steps Today",
-                          style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.yellow),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+            const TopStatusBarWidget(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              child: Row(
+                children: [
+                  const Flexible(
+                    child: TextField(
+                        decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.search_outlined),
+                            hintText: "Search classes or trainers",
+                            border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(10))))),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(Radius.circular(10)),
+                            border: Border.all(color: Colors.grey)),
+                        height: 42,
+                        width: 42,
+                        child: IconButton(onPressed: () {}, icon: const Icon(Icons.filter_list_outlined))),
+                  )
+                ],
               ),
             )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class TopStatusBarWidget extends StatelessWidget {
+  const TopStatusBarWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.yellow)),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "START TODAY",
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelLarge
+                      ?.copyWith(color: Colors.yellow, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "Streak",
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.yellow),
+                ),
+              ],
+            ),
+            const VerticalDivider(
+              color: Colors.yellow,
+              thickness: 0.5,
+              indent: 20,
+              endIndent: 20,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "2/4",
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelLarge
+                      ?.copyWith(color: Colors.yellow, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "Workout Goal",
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.yellow),
+                ),
+              ],
+            ),
+            const VerticalDivider(
+              color: Colors.yellow,
+              thickness: 0.5,
+              indent: 20,
+              endIndent: 20,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "120",
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelLarge
+                      ?.copyWith(color: Colors.yellow, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "Steps Today",
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(color: Colors.yellow),
+                ),
+              ],
+            ),
           ],
         ),
       ),
