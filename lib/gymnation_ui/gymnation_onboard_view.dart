@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_practices/gymnation_ui/gymnation_navbar_view.dart';
 import 'package:flutter_ui_practices/gymnation_ui/gymnation_register_view.dart';
+import 'package:kartal/kartal.dart';
 
-class GymnationPageView extends StatefulWidget {
-  const GymnationPageView({super.key});
+class GymnationOnboardView extends StatefulWidget {
+  const GymnationOnboardView({super.key});
   @override
-  State<GymnationPageView> createState() => _GymnationPageViewState();
+  State<GymnationOnboardView> createState() => _GymnationPageViewState();
 }
 
-class _GymnationPageViewState extends State<GymnationPageView> {
+class _GymnationPageViewState extends State<GymnationOnboardView> {
   final String _buttonText = "TRY GYMNATION NOW";
   final String _memberText = "Already a member?";
   final String _signInText = "Sign in";
@@ -52,7 +54,12 @@ class _GymnationPageViewState extends State<GymnationPageView> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: _BottomButtonWidget(buttonText: _buttonText),
+              child: _BottomButtonWidget(
+                buttonText: _buttonText,
+                onPressed: () {
+                  context.route.navigateToPage(const GymnationNavbarView());
+                },
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 20.0),
@@ -106,9 +113,12 @@ class _BottomLoginText extends StatelessWidget {
 class _BottomButtonWidget extends StatelessWidget {
   const _BottomButtonWidget({
     required String buttonText,
-  }) : _buttonText = buttonText;
+    required void Function() onPressed,
+  })  : _buttonText = buttonText,
+        _onPressed = onPressed;
 
   final String _buttonText;
+  final void Function() _onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +126,7 @@ class _BottomButtonWidget extends StatelessWidget {
       children: [
         Expanded(
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: _onPressed,
             style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(Colors.yellow)),
             child: Padding(
               padding: const EdgeInsets.all(14.0),
