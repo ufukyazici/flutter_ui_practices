@@ -10,6 +10,15 @@ class _GymnationExploreViewState extends State<GymnationExploreView> {
   @override
   Widget build(BuildContext context) {
     const String title = "GYMNATION";
+    const String recommended = "RECOMMENDED";
+    const String seeAllText = "See all";
+    final GymnasiumWorkoutModel recommendedWorkoutModel = GymnasiumWorkoutModel(
+        title: "TONED-UP TABATA",
+        trainer: "Gus Vaz Tostes",
+        duration: 27,
+        imageUrl:
+            "https://media.istockphoto.com/id/615883260/photo/difficult-doesnt-mean-impossible.jpg?s=612x612&w=0&k=20&c=cAEJvjTFRuF9H9gRov1Aj4X4I6xV6DSvMwWsf-2IW-0=",
+        workoutLevel: "Intermediate");
 
     return Scaffold(
       appBar: AppBar(
@@ -54,6 +63,44 @@ class _GymnationExploreViewState extends State<GymnationExploreView> {
                   )
                 ],
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(recommended, style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
+                Text(seeAllText,
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelLarge
+                        ?.copyWith(color: Colors.yellow, fontWeight: FontWeight.bold))
+              ],
+            ),
+            Stack(
+              children: [
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(
+                      recommendedWorkoutModel.imageUrl,
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height * 0.25,
+                      fit: BoxFit.fitWidth,
+                    )),
+                Positioned(
+                    child: Row(
+                  children: [
+                    Text(recommendedWorkoutModel.title,
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge
+                            ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                    Text(recommendedWorkoutModel.trainer,
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge
+                            ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                  ],
+                ))
+              ],
             )
           ],
         ),
@@ -143,4 +190,19 @@ class TopStatusBarWidget extends StatelessWidget {
       ),
     );
   }
+}
+
+class GymnasiumWorkoutModel {
+  final String title;
+  final String trainer;
+  final int duration;
+  final String imageUrl;
+  final String workoutLevel;
+
+  GymnasiumWorkoutModel(
+      {required this.title,
+      required this.trainer,
+      required this.duration,
+      required this.imageUrl,
+      required this.workoutLevel});
 }
