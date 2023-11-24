@@ -86,20 +86,30 @@ class _GymnationExploreViewState extends State<GymnationExploreView> {
                       fit: BoxFit.fitWidth,
                     )),
                 Positioned(
-                    child: Row(
-                  children: [
-                    Text(recommendedWorkoutModel.title,
+                    bottom: 0,
+                    left: 10,
+                    child: Column(
+                      children: [
+                        Text(recommendedWorkoutModel.title,
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge
+                                ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                        Text(recommendedWorkoutModel.trainer,
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge
+                                ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                      ],
+                    )),
+                Positioned(
+                    right: 10,
+                    bottom: 0,
+                    child: Text("${recommendedWorkoutModel.duration} Min * ${recommendedWorkoutModel.workoutLevel}",
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge
-                            ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
-                    Text(recommendedWorkoutModel.trainer,
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge
-                            ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
-                  ],
-                ))
+                            ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)))
               ],
             )
           ],
