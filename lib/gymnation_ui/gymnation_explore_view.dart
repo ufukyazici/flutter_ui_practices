@@ -12,6 +12,7 @@ class _GymnationExploreViewState extends State<GymnationExploreView> {
     const String title = "GYMNATION";
     const String recommended = "RECOMMENDED";
     const String seeAllText = "See all";
+    const String freeClassText = "FREE CLASS";
     final GymnasiumWorkoutModel recommendedWorkoutModel = GymnasiumWorkoutModel(
         title: "TONED-UP TABATA",
         trainer: "Gus Vaz Tostes",
@@ -41,7 +42,7 @@ class _GymnationExploreViewState extends State<GymnationExploreView> {
           children: [
             const TopStatusBarWidget(),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              padding: const EdgeInsets.only(top: 12.0),
               child: Row(
                 children: [
                   const Flexible(
@@ -64,54 +65,76 @@ class _GymnationExploreViewState extends State<GymnationExploreView> {
                 ],
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(recommended, style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
-                Text(seeAllText,
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelLarge
-                        ?.copyWith(color: Colors.yellow, fontWeight: FontWeight.bold))
-              ],
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(recommended,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
+                  Text(seeAllText,
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelLarge
+                          ?.copyWith(color: Colors.yellow, fontWeight: FontWeight.bold))
+                ],
+              ),
             ),
-            Stack(
-              children: [
-                ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      recommendedWorkoutModel.imageUrl,
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      fit: BoxFit.fitWidth,
-                    )),
-                Positioned(
-                    bottom: 0,
-                    left: 10,
-                    child: Column(
-                      children: [
-                        Text(recommendedWorkoutModel.title,
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelLarge
-                                ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
-                        Text(recommendedWorkoutModel.trainer,
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelLarge
-                                ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
-                      ],
-                    )),
-                Positioned(
-                    right: 10,
-                    bottom: 0,
-                    child: Text("${recommendedWorkoutModel.duration} Min * ${recommendedWorkoutModel.workoutLevel}",
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge
-                            ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)))
-              ],
-            )
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0),
+              child: Stack(
+                children: [
+                  ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.network(
+                        recommendedWorkoutModel.imageUrl,
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height * 0.25,
+                        fit: BoxFit.fitWidth,
+                      )),
+                  Positioned(
+                      bottom: 0,
+                      left: 10,
+                      child: Column(
+                        children: [
+                          Text(recommendedWorkoutModel.title,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge
+                                  ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                          Text(recommendedWorkoutModel.trainer,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelLarge
+                                  ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                        ],
+                      )),
+                  Positioned(
+                      right: 10,
+                      bottom: 0,
+                      child: Text("${recommendedWorkoutModel.duration} Min * ${recommendedWorkoutModel.workoutLevel}",
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelLarge
+                              ?.copyWith(color: Colors.white, fontWeight: FontWeight.bold)))
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(freeClassText,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
+                  Text(seeAllText,
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelLarge
+                          ?.copyWith(color: Colors.yellow, fontWeight: FontWeight.bold))
+                ],
+              ),
+            ),
           ],
         ),
       ),
