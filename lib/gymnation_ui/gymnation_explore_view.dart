@@ -7,20 +7,19 @@ class GymnationExploreView extends StatefulWidget {
 }
 
 class _GymnationExploreViewState extends State<GymnationExploreView> {
+  final String title = "GYMNATION";
+  final String recommended = "RECOMMENDED";
+  final String seeAllText = "See all";
+  final String freeClassText = "FREE CLASS";
+  final GymnasiumWorkoutModel recommendedWorkoutModel = GymnasiumWorkoutModel(
+      title: "TONED-UP TABATA",
+      trainer: "Gus Vaz Tostes",
+      duration: 27,
+      imageUrl:
+          "https://media.istockphoto.com/id/615883260/photo/difficult-doesnt-mean-impossible.jpg?s=612x612&w=0&k=20&c=cAEJvjTFRuF9H9gRov1Aj4X4I6xV6DSvMwWsf-2IW-0=",
+      workoutLevel: "Intermediate");
   @override
   Widget build(BuildContext context) {
-    const String title = "GYMNATION";
-    const String recommended = "RECOMMENDED";
-    const String seeAllText = "See all";
-    const String freeClassText = "FREE CLASS";
-    final GymnasiumWorkoutModel recommendedWorkoutModel = GymnasiumWorkoutModel(
-        title: "TONED-UP TABATA",
-        trainer: "Gus Vaz Tostes",
-        duration: 27,
-        imageUrl:
-            "https://media.istockphoto.com/id/615883260/photo/difficult-doesnt-mean-impossible.jpg?s=612x612&w=0&k=20&c=cAEJvjTFRuF9H9gRov1Aj4X4I6xV6DSvMwWsf-2IW-0=",
-        workoutLevel: "Intermediate");
-
     return Scaffold(
       appBar: AppBar(
         title: Text(title, style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold)),
