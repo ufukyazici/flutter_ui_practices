@@ -54,7 +54,7 @@ class _GymnationPageViewState extends State<GymnationOnboardView> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: _BottomButtonWidget(
+              child: BottomButtonWidget(
                 buttonText: _buttonText,
                 onPressed: () {
                   context.route.navigateToPage(const GymnationNavbarView());
@@ -110,8 +110,9 @@ class _BottomLoginText extends StatelessWidget {
   }
 }
 
-class _BottomButtonWidget extends StatelessWidget {
-  const _BottomButtonWidget({
+class BottomButtonWidget extends StatelessWidget {
+  const BottomButtonWidget({
+    super.key,
     required String buttonText,
     required void Function() onPressed,
   })  : _buttonText = buttonText,
