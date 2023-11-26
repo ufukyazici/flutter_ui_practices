@@ -4,6 +4,7 @@ import 'package:flutter_ui_practices/barber_shop_ui/barber_details_view.dart';
 import 'package:flutter_ui_practices/barber_shop_ui/barber_home_view.dart';
 import 'package:flutter_ui_practices/dating_app_ui/dating_chats_tab_view.dart';
 import 'package:flutter_ui_practices/red_triangle_ui/login_view.dart';
+import 'package:flutter_ui_practices/trip_travel_ui/trip_travel_home_view.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class TripTravelNavbarView extends StatelessWidget {
@@ -51,7 +52,7 @@ class TripTravelNavbarView extends StatelessWidget {
 
 List<Widget> _buildScreens() {
   return [
-    const BarberShopHomeView(),
+    const TripTravelHomeView(),
     BarberDetailsView(
       model: BarberShopModel(
           barberShopUrl:
@@ -74,19 +75,19 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
   return [
     PersistentBottomNavBarItem(
         icon: const Icon(Icons.navigation_outlined),
-        activeColorPrimary: Colors.black,
+        activeColorPrimary: const Color(0xff094863),
         inactiveColorPrimary: CupertinoColors.systemGrey),
     PersistentBottomNavBarItem(
-        icon: const Icon(CupertinoIcons.book_circle),
-        activeColorPrimary: Colors.black,
+        icon: const Icon(CupertinoIcons.calendar),
+        activeColorPrimary: const Color(0xff094863),
         inactiveColorPrimary: CupertinoColors.systemGrey),
     PersistentBottomNavBarItem(
-        icon: const Icon(Icons.chat_rounded),
-        activeColorPrimary: Colors.black,
+        icon: const Icon(Icons.map_outlined),
+        activeColorPrimary: const Color(0xff094863),
         inactiveColorPrimary: CupertinoColors.systemGrey),
     PersistentBottomNavBarItem(
         icon: const Icon(CupertinoIcons.person),
-        activeColorPrimary: Colors.black,
+        activeColorPrimary: const Color(0xff094863),
         inactiveColorPrimary: CupertinoColors.systemGrey),
   ];
 }

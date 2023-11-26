@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData.dark(
+      theme: ThemeData.light(
         // This is the theme of your application.
         //
         // TRY THIS: Try running your application with "flutter run". You'll see
