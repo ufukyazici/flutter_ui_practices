@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_practices/gymnation_ui/gymnation_forgot_password_view.dart';
+import 'package:flutter_ui_practices/trip_travel_ui/trip_travel_navbar_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
 
         useMaterial3: true,
       ),
-      home: const GymnationForgotPasswordView(),
+      home: const TripTravelNavbarView(),
     );
   }
 }
