@@ -45,13 +45,29 @@ class _TripTravelHomeViewState extends State<TripTravelHomeView> {
                   size: 18,
                   color: Colors.grey,
                 ),
-                Text(
-                  location,
-                  style:
-                      Theme.of(context).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold, color: Colors.grey),
-                ),
+                Text(location,
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleSmall
+                        ?.copyWith(fontWeight: FontWeight.bold, color: Colors.grey)),
               ],
             ),
+            Padding(
+              padding: const EdgeInsets.only(top: 12.0),
+              child: SizedBox(
+                height: 50,
+                child: TextField(
+                  decoration: InputDecoration(
+                      contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                      hintText: "Search...",
+                      prefixIcon: const Icon(Icons.search),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      suffixIcon: const Icon(Icons.filter_alt_rounded)),
+                ),
+              ),
+            )
           ],
         ),
       ),
