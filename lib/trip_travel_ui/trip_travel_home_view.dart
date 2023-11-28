@@ -12,6 +12,7 @@ class _TripTravelHomeViewState extends State<TripTravelHomeView> {
   final String location = "New York, USA";
   final Icon categoryIcon = const Icon(Icons.sunny);
   bool isSelected = true;
+  final String categoryTitle = "Trips";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,25 +71,49 @@ class _TripTravelHomeViewState extends State<TripTravelHomeView> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 100,
-              width: 100,
-              child: Card(
-                color: isSelected ? const Color(0xff094863) : Colors.white,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    prepareIcon(const Icon(Icons.sunny), isSelected),
-                    Text(
-                      "Trips",
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelLarge
-                          ?.copyWith(color: isSelected ? Colors.white : Colors.grey),
-                    )
-                  ],
-                ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  CategoryCardWidget(isSelected: isSelected, categoryTitle: categoryTitle),
+                  CategoryCardWidget(isSelected: isSelected, categoryTitle: categoryTitle),
+                  CategoryCardWidget(isSelected: isSelected, categoryTitle: categoryTitle),
+                  CategoryCardWidget(isSelected: isSelected, categoryTitle: categoryTitle),
+                  CategoryCardWidget(isSelected: isSelected, categoryTitle: categoryTitle),
+                ],
               ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CategoryCardWidget extends StatelessWidget {
+  const CategoryCardWidget({
+    super.key,
+    required this.isSelected,
+    required this.categoryTitle,
+  });
+
+  final bool isSelected;
+  final String categoryTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 90,
+      width: 90,
+      child: Card(
+        color: isSelected ? const Color(0xff094863) : Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            prepareIcon(const Icon(Icons.sunny), isSelected),
+            Text(
+              categoryTitle,
+              style: Theme.of(context).textTheme.labelLarge?.copyWith(color: isSelected ? Colors.white : Colors.grey),
             )
           ],
         ),
