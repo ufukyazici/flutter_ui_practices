@@ -11,7 +11,7 @@ class _TripTravelHomeViewState extends State<TripTravelHomeView> {
   final String name = "Douglas Lyphe";
   final String location = "New York, USA";
   final Icon categoryIcon = const Icon(Icons.sunny);
-  bool isSelected = false;
+  bool isSelected = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,11 +78,7 @@ class _TripTravelHomeViewState extends State<TripTravelHomeView> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      Icons.sunny,
-                      color: isSelected ? Colors.white : Colors.grey,
-                      size: 45,
-                    ),
+                    prepareIcon(const Icon(Icons.sunny), isSelected),
                     Text(
                       "Trips",
                       style: Theme.of(context)
@@ -99,4 +95,12 @@ class _TripTravelHomeViewState extends State<TripTravelHomeView> {
       ),
     );
   }
+}
+
+Widget prepareIcon(Icon categoryIcon, bool isSelected) {
+  return Icon(
+    categoryIcon.icon,
+    size: 45,
+    color: isSelected ? Colors.white : Colors.grey,
+  );
 }
