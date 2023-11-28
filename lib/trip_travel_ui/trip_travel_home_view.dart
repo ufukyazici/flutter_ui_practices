@@ -10,6 +10,8 @@ class _TripTravelHomeViewState extends State<TripTravelHomeView> {
   final String randomImageUrl = "https://xsgames.co/randomusers/assets/avatars/female/1.jpg";
   final String name = "Douglas Lyphe";
   final String location = "New York, USA";
+  final Icon categoryIcon = const Icon(Icons.sunny);
+  bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,6 +67,30 @@ class _TripTravelHomeViewState extends State<TripTravelHomeView> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                       suffixIcon: const Icon(Icons.filter_alt_rounded)),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 100,
+              width: 100,
+              child: Card(
+                color: isSelected ? const Color(0xff094863) : Colors.white,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.sunny,
+                      color: isSelected ? Colors.white : Colors.grey,
+                      size: 45,
+                    ),
+                    Text(
+                      "Trips",
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelLarge
+                          ?.copyWith(color: isSelected ? Colors.white : Colors.grey),
+                    )
+                  ],
                 ),
               ),
             )
