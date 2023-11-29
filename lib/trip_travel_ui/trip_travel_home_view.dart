@@ -82,6 +82,9 @@ class _TripTravelHomeViewState extends State<TripTravelHomeView> {
                   CategoryCardWidget(isSelected: isSelected, categoryTitle: categoryTitle),
                 ],
               ),
+            ),
+            const Row(
+              children: [Text("Hot Places")],
             )
           ],
         ),
