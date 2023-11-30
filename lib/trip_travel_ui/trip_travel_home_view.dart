@@ -83,8 +83,13 @@ class _TripTravelHomeViewState extends State<TripTravelHomeView> {
                 ],
               ),
             ),
-            const Row(
-              children: [Text("Hot Places")],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Hot Places",
+                    style: Theme.of(context).textTheme.labelLarge?.copyWith(fontWeight: FontWeight.bold)),
+                Text("See All", style: Theme.of(context).textTheme.labelLarge?.copyWith(fontWeight: FontWeight.bold))
+              ],
             )
           ],
         ),
