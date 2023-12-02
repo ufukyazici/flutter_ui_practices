@@ -71,18 +71,7 @@ class _TripTravelHomeViewState extends State<TripTravelHomeView> {
                 ),
               ),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  CategoryCardWidget(isSelected: isSelected, categoryTitle: categoryTitle),
-                  CategoryCardWidget(isSelected: isSelected, categoryTitle: categoryTitle),
-                  CategoryCardWidget(isSelected: isSelected, categoryTitle: categoryTitle),
-                  CategoryCardWidget(isSelected: isSelected, categoryTitle: categoryTitle),
-                  CategoryCardWidget(isSelected: isSelected, categoryTitle: categoryTitle),
-                ],
-              ),
-            ),
+            CategoryScrollView(isSelected: isSelected, categoryTitle: categoryTitle),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -93,6 +82,33 @@ class _TripTravelHomeViewState extends State<TripTravelHomeView> {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class CategoryScrollView extends StatelessWidget {
+  const CategoryScrollView({
+    super.key,
+    required this.isSelected,
+    required this.categoryTitle,
+  });
+
+  final bool isSelected;
+  final String categoryTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          CategoryCardWidget(isSelected: isSelected, categoryTitle: categoryTitle),
+          CategoryCardWidget(isSelected: isSelected, categoryTitle: categoryTitle),
+          CategoryCardWidget(isSelected: isSelected, categoryTitle: categoryTitle),
+          CategoryCardWidget(isSelected: isSelected, categoryTitle: categoryTitle),
+          CategoryCardWidget(isSelected: isSelected, categoryTitle: categoryTitle),
+        ],
       ),
     );
   }
