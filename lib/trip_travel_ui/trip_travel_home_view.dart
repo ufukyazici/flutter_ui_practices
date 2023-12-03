@@ -55,21 +55,9 @@ class _TripTravelHomeViewState extends State<TripTravelHomeView> {
                         ?.copyWith(fontWeight: FontWeight.bold, color: Colors.grey)),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 12.0),
-              child: SizedBox(
-                height: 50,
-                child: TextField(
-                  decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(vertical: 10),
-                      hintText: "Search...",
-                      prefixIcon: const Icon(Icons.search),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      suffixIcon: const Icon(Icons.filter_alt_rounded)),
-                ),
-              ),
+            const Padding(
+              padding: EdgeInsets.only(top: 12.0),
+              child: SearchTextFieldWidget(),
             ),
             CategoryScrollView(isSelected: isSelected, categoryTitle: categoryTitle),
             Row(
@@ -82,6 +70,29 @@ class _TripTravelHomeViewState extends State<TripTravelHomeView> {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class SearchTextFieldWidget extends StatelessWidget {
+  const SearchTextFieldWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50,
+      child: TextField(
+        decoration: InputDecoration(
+            contentPadding: const EdgeInsets.symmetric(vertical: 10),
+            hintText: "Search...",
+            prefixIcon: const Icon(Icons.search),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            suffixIcon: const Icon(Icons.filter_alt_rounded)),
       ),
     );
   }
