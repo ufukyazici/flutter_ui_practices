@@ -74,23 +74,7 @@ class _SocialShoppingHomeViewState extends State<SocialShoppingHomeView> {
               Text(_popularProducts, style: Theme.of(context).textTheme.titleLarge),
             ],
           ),
-          Expanded(
-              flex: 3,
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: 3,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(right: 12.0, left: 4, top: 4),
-                    child: Container(
-                      height: 400,
-                      width: 200,
-                      color: context.general.randomColor,
-                    ),
-                  );
-                },
-              )),
+          const SocialShoppingCardBuilder(),
           Padding(
             padding: const EdgeInsets.only(top: 4.0),
             child: Row(
@@ -137,5 +121,32 @@ class _SocialShoppingHomeViewState extends State<SocialShoppingHomeView> {
         ]),
       ),
     );
+  }
+}
+
+class SocialShoppingCardBuilder extends StatelessWidget {
+  const SocialShoppingCardBuilder({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+        flex: 3,
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: 3,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.only(right: 12.0, left: 4, top: 4),
+              child: Container(
+                height: 400,
+                width: 200,
+                color: context.general.randomColor,
+              ),
+            );
+          },
+        ));
   }
 }
